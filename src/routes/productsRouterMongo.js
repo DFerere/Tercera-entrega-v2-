@@ -24,14 +24,20 @@ router.get("/catalog", async (req, res) => {
    
     const objectsession  = req.session;
     console.log("este es req session"); 
-    console.log(req.session.idcart);
+    console.log(req.session);
+
+   const objectId_ = req.session.cart[0]._id;
+
+    // Extract the hexadecimal representation
+    //const hexString = objectId_.toHexString();
+    console.log(objectId_); 
     //console.log(req.session.idcart);
     
     //req.body.username = username;
 
     //console.log(username); 
 
-    res.render("ViewsProducts", { objectsession }); 
+    res.render("ViewsProducts", { objectId_, objectsession }); 
 })
 
 router.get("/failurelogin", async (req, res) => { //vista de falla de login

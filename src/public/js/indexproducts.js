@@ -60,20 +60,22 @@ const botonesCatalogo = (data) => {
 
         botonNodo.addEventListener("click", () => {
 
-            const idcarrito2 = document.getElementById('idcarrito').innerHTML;
+            //const idcart = document.getElementById('idcart').textContent;
+            const cartid = document.getElementById('cartid').innerHTML;
+            //const idcart = document.getElementById('idcart').getAttribute('value'); 
              
-            const idcarrito = idcarrito2.toString(); 
-            console.log(idcarrito); 
-            
+            //const idcarrito = idcarrito2.toString(); 
+            console.log(cartid); 
+
             let idproduct = producto._id;
-            console.log(idproduct);
+            console.log("Imprimo iproduct");
             //const idcarrito = "650f8a995f9deb7531fb7380";
             //const idcarro = req.session.idcart; 
 
             console.log("ESTAMOS EN INDEXPRODUCTS"); 
 
-            socket.emit('addproductCarrito', {
-                idcarrito,
+           socket.emit('addproductCarrito', {
+                cartid,
                 idproduct,
             })
 

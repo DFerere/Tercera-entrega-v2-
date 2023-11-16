@@ -101,7 +101,7 @@ router.post('/login_passport',
         req.session.email = req.user.email;
         req.session.age = req.user.age;
         req.session.rol = req.user.rol;
-        req.session.idcart = req.user.idcart;
+        req.session.cart = req.user.cart;
         req.session.isLogged = true;
 
         const name = req.session.first_name;

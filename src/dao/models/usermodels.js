@@ -13,7 +13,16 @@ const usersSchema = new mongoose.Schema({
     age: Number, 
     password: String,
     rol : String,
-    idcart: String
+    cart: {
+        type: [
+            {
+                id: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'carts',
+                }
+            }
+        ], default: null
+    }
 })
 
 usersSchema.plugin(mongoosePaginate); 

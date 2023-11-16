@@ -16,6 +16,7 @@ import adminManagement from './routes/realproductsRouterHandlebars2.js';
 
 import ProductManagerMongo from './controllers/mongo/productsManagerMongo.js';
 import CartManagerMongo from './controllers/mongo/cartsManagerMongo.js';
+import userManager from './controllers/userManager.js';
 
 import { chatModel } from './dao/models/chatmodels.js';
 import { productsModel } from './dao/models/productsmodels.js';
@@ -31,6 +32,7 @@ const program = new Command();
 
 const productosMongo = new ProductManagerMongo();
 const carritoMongo = new CartManagerMongo();
+const usermongo = new userManager(); 
 
 console.log(config.port); 
 
@@ -196,27 +198,31 @@ socketServer.on('connection', async socket => {
 
   socket.on('addproductCarrito', async idprod => {
 
-    //console.log(idprod);
-    const idcarrito = !idprod.idcarrito ? null : idprod.idcarrito;
+    console.log("Ya ingreso en el servidor"); 
+
+    console.log(idprod);
+    const cartid = !idprod.idcart ? null : idprod.idcart;
     const idproduct = !idprod.idproduct ? null : idprod.idproduct;
     
   
-    //console.log(idcarrito);
+    console.log(idprod.cartid);
     //console.log(idproduct); 
 
     //const quantity = 1; 
     //const response = await productos.deleteproductByID(id);
 
-    if (idprod == null && idcarrito == null) {
-      const response = await carritoMongo.createcart();
+    if (idprod == null && idcart == null) {
+      //const response = await carritoMongo.createcart();
     } else {
       console.log("Vamos agregar un producto al carrito");
-      console.log(idcarrito); 
-      const response2 = await carritoMongo.addProductCart(idcarrito, idproduct);
+      console.log(cartid); 
+      //const user = await usermongo.finduseremail(emailuser); 
+      //console.log(user); 
+      //const response2 = await carritoMongo.addProductCart(idcarrito, idproduct);
       //console.log(response);
     }
 
-    const allproducts = await productosMongo.getallProducts();
+    //const allproducts = await productosMongo.getallProducts();
     socketServer.emit('prod', allproducts);
     //socketServer.emit('prod', );
 

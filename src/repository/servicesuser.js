@@ -17,8 +17,8 @@ class user {
 
     }
 
-    async create(first_name, last_name, email, age, password, rol, idcart){
-
+    async create(first_name, last_name, email, age, password, rol, cart){
+        console.log(cart); 
         const user = await usersModel.create({
             first_name,
             last_name,
@@ -26,7 +26,7 @@ class user {
             age,
             password: bcrypt.hashSync(password, bcrypt.genSaltSync(10)),
             rol,
-            idcart
+            cart
         });
 
         return user; 

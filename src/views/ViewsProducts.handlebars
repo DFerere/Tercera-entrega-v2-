@@ -5,15 +5,13 @@
   <button value="submit">Logout</button>
 </form>
 
-<form action="http://localhost:8080/mongo/carts/{{objectsession.idcart}}/purchase", method="post">
+<form action="http://localhost:8080/mongo/carts/{{objectId_}}/purchase", method="post">
   <button value="submit">Comprar</button>
 </form>
 
 <article id="catalogo"></article>
 
-<div id="idcarrito">
-  {{objectsession.idcart}}         
-</div>`
+<div id="cartid"> {{objectId_}}</div>
 
 
 

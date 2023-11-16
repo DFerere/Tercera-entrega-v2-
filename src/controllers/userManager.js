@@ -49,6 +49,7 @@ class userManager {
 
     }
 
+
     /*async registerbypassport(first_name, last_name, email, username, age, password){
 
         const userExists = await usersModel.findOne({ email: username });
