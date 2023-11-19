@@ -10,16 +10,7 @@ class ProductManagerMongo {
     async createproduct(title, description, price, thumbnail, code, stock, status, category) {
 
         const produ = await servicesproducts.create(title, description, price, thumbnail, code, stock, status, category); 
-        /*const produ = await productsModel.create({
-            title,
-            description,
-            price,
-            thumbnail,
-            code,
-            stock,
-            status,
-            category,
-        })*/
+      
 
         console.log(produ); 
 
@@ -29,15 +20,12 @@ class ProductManagerMongo {
     async getallProducts(){
 
         const getprod = await servicesproducts.getallproducts(); 
-        //const getprod = await productsModel.find().lean(); 
-        //console.log(getprod); 
         return getprod; 
     }
 
     async getProducts(limit){
 
         const getprod = await servicesproducts.getproducts(limit); 
-        //const getprod = await productsModel.find({}).limit(limit).exec().lean(); 
         return getprod; 
     }
 
@@ -61,15 +49,7 @@ class ProductManagerMongo {
           };
 
         const getprod = await productsModel.paginate(query, {limit: limit, page: page, sort: { _id: sortvalue, price: 1}, customLabels: myCustomLabels}); 
-        //const stockprod = await productsModel.find({category}); 
-       // console.log(stockprod); 
-       /* if(getprod.stock == 0){
-            return "El producto no esta Disponible";
-        } else {
-            return getprod; 
-        }*/
         return getprod; 
-        //sort({price: 1});
     }; 
 
     async deleteproducts (idproduct){
