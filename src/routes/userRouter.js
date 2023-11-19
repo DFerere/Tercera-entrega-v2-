@@ -23,24 +23,6 @@ router.post('/signup', async (req, res) => {
 
     await users.registeruser(username, email, password);
 
-    /*const userExists = await usersModel.findOne({ email });
-
-    if (userExists) { //validamos si usuario ya existe en la BD
-        return res.send("El usuario ya existe");
-    }
-
-    if (email == process.env.ADMIN_EMAIL_1 || email == process.env.ADMIN_EMAIL_2) {
-        const rol = "admin";
-        const user = await usersModel.create({ username, email, password, rol });
-        console.log(username);
-    } else {
-        const rol = "user";
-        const user = await usersModel.create({ username, email, password, rol });
-        console.log(username);
-    }*/
-
-
-
     //guardamos info del usuario en session
     req.session.username = username;
     req.session.email = email;
@@ -57,10 +39,7 @@ router.post('/sendemail', async (req, res) => {
 
     const { email } = req.body;
     console.log(email);
-
     await users.useremail(email);
-
-    //res.redirect('/ecommerce/home/profile');
 
     res.send("Correo enviado");
 
@@ -90,15 +69,6 @@ router.post('/login_passport',
     async (req, res) => {
         //guardamos info del usuario en session
 
-        /*req.session.user = {
-            firstname: req.user.first_name,
-            lastname: req.user.last_name,
-            email: req.user.email,
-            age: req.user.age,
-            role: req.user.rol,
-            idcart: req.user.idcart
-          };*/
-
         req.session.first_name = req.user.first_name;
         req.session.last_name = req.user.last_name;
         req.session.email = req.user.email;
@@ -114,18 +84,12 @@ router.post('/login_passport',
         console.log(req.session.rol);
 
         if (req.session.rol === 'user') {
-            //res.render('home_user', { name });
             res.redirect('/ecommerce/user/user'); 
         } else {
-            //res.render('home_admin', { name });
             res.redirect('/ecommerce/user/admin'); 
         };
 
 
-
-        // res.redirect('/mongo/products/catalog');
-
-        //res.redirect('/api/sessions/current');
     }
 );
 
@@ -171,19 +135,12 @@ router.post('/login', async (req, res) => {
         return res.send("Credenciales INVALIDAS");
     }
 
-    //const user = await usersModel.create({ username, email, password });
-    //console.log(username); 
     //guardamos info del usuario en session
     req.session.username = username;
     req.session.email = user.email;
     req.session.isLogged = true;
 
-    //res.send("Bienvenido");
-
     res.redirect('/mongo/products/catalog');
-
-    //res.redirect('/ecommerce/home/profile');
-
 
 
 });
@@ -204,35 +161,8 @@ router.get(
         req.session.email = req.user.email;
         req.session.age = req.user.age;
         req.session.isLogged = true;
-        //res.redirect('/ecommerce/home/profile');
         res.redirect('/mongo/products/catalog');
     });
 
-
-/*router.get('/profile', async (req, res) => {
-
-    const { username, email} = req.session;
-    console.log(username);
-
-    //const userExists = await usersModel.findOne({ email });
-
-    /*if (userExists) { //validamos si usuario ya existe en la BD
-        return res.send("El usuario ya existe");
-    }*/
-
-//const user = await usersModel.create({ username, email, password });
-//console.log(username); 
-//guardamos info del usuario en session
-/*req.session.username = username;
-req.session.email = email;
-req.session.isLogged = true;*/
-
-//res.send("Bienvenido");
-
-/*res.render('/profile', { username, email});
-
-
-
-});*/
 
 export default router;
