@@ -2,7 +2,7 @@ import { Router } from 'express';
 import privateRoutes from '../middlewares/privateroutes.js';
 import CustomError from '../repository/errors/CustomError.js';
 import EErrors from '../repository/errors/EErrors.js';
-import { generateUserErrorInfo } from '../repository/errors/Info.js';
+import { generateRegisterUserErrorInfo, generateUserErrorInfo } from '../repository/errors/Info.js';
 
 const router = Router(); 
 
@@ -65,6 +65,16 @@ router.get("/failurelogin", async (req, res) => {
 })
 
 router.get("/failregister", async (req, res) => { 
+
+    const {first_name, last_name, username, email, age}  = req.body; 
+    if(!email || !first_name || !last_name || age || !username){
+        CustomError.createError({
+            name: "Error en dato de registro",
+            message: "Error error registrandose", 
+            cause: generateRegisterUserErrorInfo({email, first_name, last_name, age}),
+            code: EErrors.INVALID_TYPE_ERROR
+        })
+    }
 
     res.send("Caramba algo salio mal con el resgitro, al parecer tu correo ya existe"); 
 })

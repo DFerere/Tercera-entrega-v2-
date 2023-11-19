@@ -3,6 +3,10 @@ import { Router, response } from 'express';
 import ProductManagerMongo from '../controllers/mongo/productsManagerMongo.js';
 import products from '../repository/servicesproducts.js';
 import productsfakermanager from '../controllers/ProductsManagerFake.js';
+import CustomError from '../repository/errors/CustomError.js';
+import EErrors from '../repository/errors/EErrors.js';
+import { generateRegisterUserErrorInfo, generateUserErrorInfo, generateCreateProductErrorInfo } from '../repository/errors/Info.js';
+
 
 const router = Router();
 
@@ -76,6 +80,15 @@ router.post('/management/create', async (req, res) => { //creas productos
     const category = req.body.category;
 
     console.log(title);
+ 
+    if(!title || !description || !price || !thumbnail || !code || !stock || !status || !category){
+        CustomError.createError({
+            name: "Error en dato de creacion de producto",
+            message: "Error creando producto", 
+            cause: generateCreateProductErrorInfo({title}),
+            code: EErrors.INVALID_TYPE_ERROR
+        })
+    }
 
     try {
         const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category);
