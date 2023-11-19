@@ -9,13 +9,10 @@ class mailing {
     async usemailing(email) {
 
         var transporter = nodemailer.createTransport({
-            //service: 'gmail',
             host: 'smtp.ethereal.email',
             auth: {
              user: 'anthony44@ethereal.email',
               pass: '1w1HtFSHHHTnWAACcW'
-              /*user: process.env.EMAIL_MAILING,
-              pass: process.env.PASSWORD_MAILING*/
             },
             tls: {
                 rejectUnauthorized: false
