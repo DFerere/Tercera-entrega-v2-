@@ -45,15 +45,11 @@ router.get("/catalog", async (req, res) => {
 router.get("/mockingproducts", async (req, res) => {
 
     const objectsession = req.session;
-    //console.log("este es req session en mocking");
-    //console.log(req.session);
 
     const products = await faker.generator();
 
-    //console.log(products); 
-
     res.render("mockingproducts", { products, objectsession });
-    //res.send(products); 
+    
 })
 
 

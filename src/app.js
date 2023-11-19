@@ -28,17 +28,16 @@ import { Command } from 'commander';
 import dotenv from 'dotenv';
 import config from './config/config.js';
 
-import productsfakermanager from './controllers/ProductsManagerFake.js';
+import errorHandler from './middlewares/indexerror.js';
+
+import compression from 'express-compression'; 
 
 const program = new Command(); 
 
 const productosMongo = new ProductManagerMongo();
 const carritoMongo = new CartManagerMongo();
 const usermongo = new userManager(); 
-
-//Prueba de mocking fakerjs
-
-//const faker = new productsfakermanager; 
+; 
 
 console.log(config.port); 
 
@@ -56,10 +55,6 @@ const httpServer = app.listen(port, () => console.log("Servidor corriendo!!"));
 const socketServer = new Server(httpServer);
 
 app.engine('handlebars', handlebars.engine());
-
-//Prueba faker js
-
-//console.log(await faker.generator()); 
  
 
 //Para uso y almacenamiento de sessions
@@ -75,6 +70,12 @@ app.engine('handlebars', handlebars.engine());
     saveUninitialized: false,
   })
 );*/
+
+//Usamos compresion de datos de transferencia 
+
+app.use(compression({
+  brotli: {enable:true, zlib:{}}
+})); 
 
 app.use(
   session({
@@ -132,9 +133,7 @@ app.use('/api/sessions', sessionRouter);
 
 app.use('/api/chat', chatRouterMongo); //endpoint del chat
 
-
-
-
+app.use(errorHandler); 
 
 
 //Sockets///

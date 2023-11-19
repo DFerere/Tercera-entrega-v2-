@@ -1,35 +1,18 @@
-import { faker } from '@faker-js/faker';
+import fakerjs from '../dao/models/productsfakermodels.js';
+
+const fakerprod = new fakerjs();
 
 
-class fakerjs {
+class fakerjs_service {
 
     async test() {
 
-
-        const name = faker.commerce.productName();
-        const productDescription = faker.commerce.productDescription();
-        const price = faker.commerce.price();
-        const category = faker.commerce.department(name);
-        const code = faker.commerce.isbn();
-        const stock = faker.number.int({ max: 1000 }); 
-        const thumbnail = faker.internet.url(); 
-         
-
-        const fakeproduct = {
-            name, 
-            productDescription, 
-            price,
-            thumbnail, 
-            code,
-            stock,
-            category    
-        };
-
-        return fakeproduct; 
+        const productsfake = await fakerprod.fakermodel(); 
+        return productsfake; 
     }
 
 
 };
 
-export default fakerjs;
+export default fakerjs_service;
 

@@ -1,5 +1,8 @@
 import { Router } from 'express';
 import privateRoutes from '../middlewares/privateroutes.js';
+import CustomError from '../repository/errors/CustomError.js';
+import EErrors from '../repository/errors/EErrors.js';
+import { generateUserErrorInfo } from '../repository/errors/Info.js';
 
 const router = Router(); 
 
@@ -47,7 +50,16 @@ router.get('/logout', async (req, res)  => { //entra a vista de login
     res.redirect('/ecommerce/home/login');
 });
 
-router.get("/failurelogin", async (req, res) => { 
+router.get("/failurelogin", async (req, res) => {
+    const email = req.body.email; 
+    if(!email){
+        CustomError.createError({
+            name: "Email errado",
+            message: "Error de login", 
+            cause: generateUserErrorInfo({email}),
+            code: EErrors.INVALID_TYPE_ERROR
+        })
+    }
 
     res.send("Sorry :( credenciales incorrectas"); 
 })

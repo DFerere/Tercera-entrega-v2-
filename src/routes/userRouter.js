@@ -6,6 +6,9 @@ import dotenv from 'dotenv';
 import privateRoutes from '../middlewares/privateroutes.js';
 import userpermissionsRoutes from '../middlewares/authorization.js';
 import adminpermissionsRoutes from '../middlewares/authorizationadmin.js';
+import CustomError from '../repository/errors/CustomError.js';
+import EErrors from '../repository/errors/EErrors.js';
+import { generateUserErrorInfo } from '../repository/errors/Info.js';
 
 dotenv.config();
 
