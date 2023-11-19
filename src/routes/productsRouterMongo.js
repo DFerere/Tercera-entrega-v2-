@@ -2,6 +2,7 @@ import { Router, response } from 'express';
 
 import ProductManagerMongo from '../controllers/mongo/productsManagerMongo.js';
 import products from '../repository/servicesproducts.js';
+import productsfakermanager from '../controllers/ProductsManagerFake.js';
 
 const router = Router();
 
@@ -11,6 +12,7 @@ const router = Router();
 //app.use(express.json());
 
 const productosMongo = new ProductManagerMongo();
+const faker = new productsfakermanager();
 
 
 const serviceproducts = new products();
@@ -19,40 +21,56 @@ const serviceproducts = new products();
     res.render("realTimeProducts", {
     })
 })*/
- /*View de productos catalogo paginaciçion*/
+/*View de productos catalogo paginaciçion*/
 router.get("/catalog", async (req, res) => {
-   
-    const objectsession  = req.session;
-    console.log("este es req session"); 
+
+    const objectsession = req.session;
+    console.log("este es req session");
     console.log(req.session);
 
-   const objectId_ = req.session.cart[0]._id;
+    const objectId_ = req.session.cart[0]._id;
 
     // Extract the hexadecimal representation
     //const hexString = objectId_.toHexString();
-    console.log(objectId_); 
+    console.log(objectId_);
     //console.log(req.session.idcart);
-    
+
     //req.body.username = username;
 
     //console.log(username); 
 
-    res.render("ViewsProducts", { objectId_, objectsession }); 
+    res.render("ViewsProducts", { objectId_, objectsession });
 })
+
+router.get("/mockingproducts", async (req, res) => {
+
+    const objectsession = req.session;
+    //console.log("este es req session en mocking");
+    //console.log(req.session);
+
+    const products = await faker.generator();
+
+    //console.log(products); 
+
+    res.render("mockingproducts", { products, objectsession });
+    //res.send(products); 
+})
+
+
 
 router.get("/failurelogin", async (req, res) => { //vista de falla de login
 
-    res.send("Sorry :( credenciales incorrectas"); 
+    res.send("Sorry :( credenciales incorrectas");
 })
 
-router.get('/management', async (req, res)  => { //redirecciona a vista de gestion de productos
+router.get('/management', async (req, res) => { //redirecciona a vista de gestion de productos
 
-    res.render('productsmanagement'); 
+    res.render('productsmanagement');
 })
 
-router.post('/management/create', async (req, res)  => { //creas productos
+router.post('/management/create', async (req, res) => { //creas productos
 
-    const title = req.body.title; 
+    const title = req.body.title;
     const description = req.body.description;
     const price = req.body.price;
     const thumbnail = req.body.thumbnail;
@@ -65,18 +83,18 @@ router.post('/management/create', async (req, res)  => { //creas productos
 
     try {
         const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category);
-        return res.redirect('/mongo/products/management'); 
+        return res.redirect('/mongo/products/management');
     } catch {
-        res.send("Hubo un error creando el producto"); 
-    }; 
+        res.send("Hubo un error creando el producto");
+    };
 })
 
 router.delete("/management/delete", async (req, res) => { //borras productos
-    
-    console.log("Entramos a delete"); 
+
+    console.log("Entramos a delete");
     console.log(req.body.id);
-    const objectsession  = req.session;
-    console.log("este es req session"); 
+    const objectsession = req.session;
+    console.log("este es req session");
     console.log(req.session.email);
 
     const id = req.body.id;
@@ -85,37 +103,37 @@ router.delete("/management/delete", async (req, res) => { //borras productos
         const deleteproduct = await serviceproducts.deleteproducts(id);
 
     } catch {
-        res.send("Hubo un error eliminando el producto"); 
-    }; 
-    
+        res.send("Hubo un error eliminando el producto");
+    };
+
 })
 
 router.put("/management/update", async (req, res) => { //actualiza productos
-   
-    const objectsession  = req.session;
-    console.log("este es req session"); 
+
+    const objectsession = req.session;
+    console.log("este es req session");
     console.log(req.session.email);
 
     const id = req.body.id;
     const element = req.body.element;
-    const value = req.body.value; 
+    const value = req.body.value;
 
     try {
         const deleteproduct = await serviceproducts.updateproducts(id, element, value);
 
     } catch {
-        send.res("Hubo un error actualizando el producto"); 
+        send.res("Hubo un error actualizando el producto");
     };
 
 })
 
 router.get("/current", async (req, res) => {
-   
-    const objectsession  = req.session;
-    console.log("este es req session"); 
+
+    const objectsession = req.session;
+    console.log("este es req session");
     console.log(req.session.email);
 
-    res.send(objectsession); 
+    res.send(objectsession);
 })
 
 /*Limite de Productos*/
@@ -148,9 +166,9 @@ router.get('/', async (req, res) => { //trae lista de productos con param limit,
 
     var page = req.query.page;
     var limit = req.query.limit;
-    var query = req.query.query; 
+    var query = req.query.query;
     var queryvalue = req.query.queryvalue;
-    var sortvalue = req.query.sortvalue; 
+    var sortvalue = req.query.sortvalue;
 
     /*res.render("ViewsProducts", {
     })*/
@@ -158,33 +176,33 @@ router.get('/', async (req, res) => { //trae lista de productos con param limit,
     parseInt(page);
     parseInt(limit);
     parseInt(sortvalue);
-    console.log(page); 
+    console.log(page);
     console.log(query);
-    console.log(queryvalue);  
-    console.log("Entre a GET de numero de Paginas"); 
+    console.log(queryvalue);
+    console.log("Entre a GET de numero de Paginas");
     //const response = await productos.getProducts();
 
-    if(!sortvalue){
-        sortvalue = 1; 
+    if (!sortvalue) {
+        sortvalue = 1;
     }
 
     if (!page && !limit && !query) {
         const pageconst = 1;
         const limitconst = 10;
-        const query = {}; 
+        const query = {};
         const response = await productosMongo.getpageProducts(query, pageconst, limitconst, sortvalue);
-        return response; 
+        return response;
         //console.log(response); 
         return res.send(response); //Habilitar si usa Postman
-    } 
+    }
 
     if (page && !limit && !query) {
         //const pageconst = 1;
-        const limitconst = 10; 
+        const limitconst = 10;
         const query = {};
         const response = await productosMongo.getpageProducts(query, page, limitconst, sortvalue);
         return res.send(response);
-    } 
+    }
 
     if (!page && limit && !query) {
         const pageconst = 1;
@@ -192,16 +210,16 @@ router.get('/', async (req, res) => { //trae lista de productos con param limit,
         const query = {};
         const response = await productosMongo.getpageProducts(query, pageconst, limit, sortvalue);
         return res.send(response);
-    } 
+    }
 
     if (!page && !limit && query) {
         const pageconst = 1;
         const limitconst = 10;
-        const queryobject = {category : queryvalue}; 
-        console.log(queryobject); 
+        const queryobject = { category: queryvalue };
+        console.log(queryobject);
         const response = await productosMongo.getpageProducts(queryobject, pageconst, limitconst, sortvalue);
         return res.send(response);
-    } 
+    }
 
     if (page && limit && !query) {
         //const pageconst = 1;
@@ -215,21 +233,21 @@ router.get('/', async (req, res) => { //trae lista de productos con param limit,
         const pageconst = 1;
         //const limitconst = 10; 
         //const query = {};
-        const queryobject = {category : queryvalue};
+        const queryobject = { category: queryvalue };
         const response = await productosMongo.getpageProducts(queryobject, pageconst, limit, sortvalue);
         return res.send(response);
     }
 
     if (page && !limit && query) {
         //const pageconst = 1;
-        const limitconst = 10; 
+        const limitconst = 10;
         //const query = {};
-        const queryobject = {category : queryvalue};
+        const queryobject = { category: queryvalue };
         const response = await productosMongo.getpageProducts(queryobject, page, limitconst, sortvalue);
         return res.send(response);
     } else {
         //const query = query; 
-        const queryobject = {category : queryvalue};
+        const queryobject = { category: queryvalue };
         //console.log(queryobject);
         const response = await productosMongo.getpageProducts(queryobject, page, limit, sortvalue);
         return res.send(response);

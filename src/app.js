@@ -26,13 +26,19 @@ import passport from 'passport';
 
 import { Command } from 'commander';
 import dotenv from 'dotenv';
-import config from './config/config.js';  
+import config from './config/config.js';
+
+import productsfakermanager from './controllers/ProductsManagerFake.js';
 
 const program = new Command(); 
 
 const productosMongo = new ProductManagerMongo();
 const carritoMongo = new CartManagerMongo();
 const usermongo = new userManager(); 
+
+//Prueba de mocking fakerjs
+
+//const faker = new productsfakermanager; 
 
 console.log(config.port); 
 
@@ -50,6 +56,10 @@ const httpServer = app.listen(port, () => console.log("Servidor corriendo!!"));
 const socketServer = new Server(httpServer);
 
 app.engine('handlebars', handlebars.engine());
+
+//Prueba faker js
+
+//console.log(await faker.generator()); 
  
 
 //Para uso y almacenamiento de sessions
