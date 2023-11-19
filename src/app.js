@@ -49,27 +49,12 @@ console.log(port);
 const app = express();
 
 
-//const httpServer = app.listen(8080, () => console.log("Servidor corriendo!!"));
 const httpServer = app.listen(port, () => console.log("Servidor corriendo!!"));
 
 const socketServer = new Server(httpServer);
 
 app.engine('handlebars', handlebars.engine());
  
-
-//Para uso y almacenamiento de sessions
-/*app.use(
-  session({
-    store: MongoStore.create({
-      mongoUrl: 
-      'mongodb+srv://davidferere:Pagaille.17@ecommerce.zxhcx9m.mongodb.net/?retryWrites=true&w=majority',
-      ttl: 15, 
-    }), 
-    secret: 'davidferere',
-    resave: false,
-    saveUninitialized: false,
-  })
-);*/
 
 //Usamos compresion de datos de transferencia 
 
@@ -100,12 +85,6 @@ app.use(express.json());
 
 app.use(express.static(__dirname + '/public'));
 
-/*const DBconnection = async () => {
-
-  await mongoose.connect('mongodb+srv://davidferere:Pagaille.17@ecommerce.zxhcx9m.mongodb.net/?retryWrites=true&w=majority');
-
-}*/
-
 const DBconnection = async () => {
 
   await mongoose.connect(process.env.MONGO_URL);
@@ -125,8 +104,6 @@ app.use('/ecommerce/home', sessionRouter); //Ruta de sesiones y login
 app.use('/ecommerce/user', userRouter); //Ruta de usarios
 
 
-//app.use('/products', productsRouterMongo); //view de products
-
 app.use('/api', cartsRouterMongo);
 
 app.use('/api/sessions', sessionRouter);
@@ -141,7 +118,6 @@ app.use(errorHandler);
 socketServer.on('connection', async socket => {
   console.log("Cliente nuevo conectado")
   const allproducts = await productosMongo.getallProducts();
-  //console.log(response);
   socketServer.emit('prod', allproducts);
   socket.on('message', data => {
     console.log(data);
@@ -149,18 +125,13 @@ socketServer.on('connection', async socket => {
 
   //Enviar catalogo de productos por handlebars
   const query = {};
-  //const allPageProducts = await productosMongo.getpageProducts(query, 1, 10, 1);
   //Traemos productos paginados
   const allPageProducts = await productosMongo.getallProducts();
-  //console.log("AllPageProducts"); 
-  //console.log(allPageProducts); 
   socketServer.emit('product', allPageProducts);
 
   //Traemos lista de productos de carritos con populate
-  //const cid = cartsRouterMongo.returncid; 
   const cid = "650f8a995f9deb7531fb7380"; 
-  const getCart = await carritoMongo.getCartProducts(cid);
-  //JSON.stringify(getCart), 
+  const getCart = await carritoMongo.getCartProducts(cid); 
   console.log(getCart);
   console.log(typeof(getCart)); 
   socketServer.emit('cart', getCart);
@@ -180,8 +151,6 @@ socketServer.on('connection', async socket => {
   socket.on('sendNewProduct', async id => {
     console.log(id);
     await productsModel.deleteOne(id);
-    //const allproducts = await productos.getProducts(); 
-    //console.log(response);
     socketServer.emit('prod',);
 
   })
@@ -215,25 +184,15 @@ socketServer.on('connection', async socket => {
     
   
     console.log(idprod.cartid);
-    //console.log(idproduct); 
-
-    //const quantity = 1; 
-    //const response = await productos.deleteproductByID(id);
 
     if (idprod == null && idcart == null) {
-      //const response = await carritoMongo.createcart();
     } else {
       console.log("Vamos agregar un producto al carrito");
       console.log(cartid); 
-      //const user = await usermongo.finduseremail(emailuser); 
-      //console.log(user); 
-      //const response2 = await carritoMongo.addProductCart(idcarrito, idproduct);
-      //console.log(response);
+
     }
 
-    //const allproducts = await productosMongo.getallProducts();
     socketServer.emit('prod', allproducts);
-    //socketServer.emit('prod', );
 
   })
 
