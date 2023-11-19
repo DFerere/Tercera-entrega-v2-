@@ -5,11 +5,6 @@ import TicketManagerMongo from '../controllers/mongo/ticketManagerMongo.js';
 
 const router = Router();
 
-//const pm = require("./ProductManager.js");
-
-//app.use(express.urlencoded({ extended: true }));
-//app.use(express.json());
-
 const carritosMongo = new CartManagerMongo();
 const ticket = new TicketManagerMongo(); 
 
@@ -19,9 +14,6 @@ router.get("/", async (req, res) => {
 })
 
 router.delete("/carts/:cid/products/:pid", async (req, res) => {
-
-    //var cid = parseInt(req.params.cid);
-    //var pid = parseInt(req.params.pid);
 
     var cid = req.params.cid;
     var pid = req.params.pid;
@@ -37,9 +29,6 @@ router.delete("/carts/:cid/products/:pid", async (req, res) => {
 })
 
 router.put("/carts/:cid/products/:pid", async (req, res) => {
-
-    //var cid = parseInt(req.params.cid);
-    //var pid = parseInt(req.params.pid);
 
     var cid = req.params.cid;
     var pid = req.params.pid;
@@ -57,14 +46,9 @@ router.put("/carts/:cid/products/:pid", async (req, res) => {
 
 router.delete("/carts/:cid", async (req, res) => {
 
-    //var cid = parseInt(req.params.cid);
-    //var pid = parseInt(req.params.pid);
-
     var cid = req.params.cid;
-    //var pid = req.params.pid;
 
     console.log(cid);
-    //console.log(pid); 
 
     const response = await carritosMongo.deleteCartProducts(cid);
 
@@ -79,18 +63,10 @@ function returncid(cid){
 
 router.get("/carts/:cid", async (req, res) => {
 
-    //var cid = parseInt(req.params.cid);
-    //var pid = parseInt(req.params.pid);
-
     var cid = req.params.cid;
-    //var pid = req.params.pid;
 
     console.log(cid);
-    //console.log(typeof(cid));
-    //console.log(pid); 
-
-    //returncid(cid); 
-
+  
     const response = await carritosMongo.getCartProducts(cid);
 
 
@@ -110,45 +86,20 @@ router.get("/products/:cid", async (req, res) => {
     const str2 = JSON.parse(str); 
 
     console.log(str2[0]); 
-    /*res.render("ViewsCarts", {
-        cid : cid,
-        response : response,
 
-    });*/
 
     const response2 = response[0]; 
 
     res.render("ViewsCarts", { response2 });
 
-    //var cid = parseInt(req.params.cid);
-    //var pid = parseInt(req.params.pid);
-
-    //var cid = req.params.cid;
-    //var pid = req.params.pid;
-
-    //console.log(cid); 
-    //console.log(pid); 
-
-    //return cid; 
-
-    //returncid(cid); 
-
-    
-
-    //return res.send(response);
 })
 
 
 router.post("/:cid/purchase", async (req, res) => {
 
     var cid = req.params.cid;
-    //var pid = parseInt(req.params.pid);
-
-    /*var cid = req.params.cid;
-    var pid = req.params.pid;*/
 
     console.log(cid);
-    //console.log(pid);
 
     const objectsession  = req.session;
 
