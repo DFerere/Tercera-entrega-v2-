@@ -9,7 +9,7 @@ export default (error, req, res, next) => {
             break; 
             
         default:
-            res.send("Error no manejado"); 
+            res.send({status:"error", error:"Error no manejado"}); 
 
     }
 
