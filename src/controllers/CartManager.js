@@ -190,27 +190,7 @@ class CartManager {
 
 }
 
-
-
-
-
-//const productos = new ProductManager(); //instanciamos clase ProductManager
-
-//productos.getProduct();
-
-//const funcionAsync = async () => { //definimos funcición asincrona para la ejecución de cada metodo
-//Descomente aquellos metodos que desea probar
-//await productos.addProduct2( "Asus Laptop", "Asus TUF Gaming A15 2022 color gris", 100, "www.amazon.com/asus_tuf_a15", 100, 4); //agregamos primer producto
-//await productos.addProduct2("Laptop HP", "HP Victus Gaming color negro", 800, "www.hplaptops.com/hp_victus", 101, 10); //agregamos segundo producto
-//await productos.addProduct2("Laptop Acer", "Acer Pradator Gaming color blanco", 1000, "www.acerlaptops.com/hp_victus", 105, 18);
-//console.log(await productos.getproductByID (1)); //llamamos metodo para buscar producto por ID
-//productos.getProduct(); //retorna contenido del file que resguarda lista de productos
-//await productos.updateproductByID(1, "Laptop Canaimita", null, null, null, 200, 15); //modificamos datos de un producto por ID
-//await productos.deleteproductByID(1); //borramos un producto de la lista segun su ID
-
-//};
-
-//funcionAsync(); //ejecutamos función asincrona 
+ 
 export default CartManager; //exportamos clase CartManager
 
 
