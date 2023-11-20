@@ -26,28 +26,13 @@ class CartManagerMongo {
             }
 
 
-            /*const cartcreate = await cartsModel.create({
-                Products: {
-                    product: idProduct,
-                    quantity: quantity_init,
-                }
-            });*/
-
-            //console.log(cartcreate); 
 
         } else {
 
             console.log("Entro en el else");
 
             let cart = new Array();
-
-            try {
-                cart = await servicescarts.findbyID(idCart);
-
-            } catch {
-                return "error buscando carrito"
-            }
-
+            cart = await servicescarts.findbyID(idCart);
             /*cart = await cartsModel.findById({
                 _id: idCart,
             });*/
@@ -63,12 +48,12 @@ class CartManagerMongo {
 
                     if (product_find) {
 
-                        product_find.quantity += 1;
+                    product_find.quantity += 1;
 
-                        //const sum_quantity = quantity + 1; 
+                    //const sum_quantity = quantity + 1; 
 
-                        cart.save();
-                        //console.log(cart); 
+                    cart.save();
+                    //console.log(cart); 
 
                     } else {
 
@@ -83,9 +68,6 @@ class CartManagerMongo {
                 } catch {
                     return "Error buscando producto dentro de carrito";
                 }
-
-
-
 
             } /*else {
 
@@ -103,30 +85,14 @@ class CartManagerMongo {
         }
 
 
-        /*let cart = new Array(); 
-
-        cart = await cartsModel.find({
-            _id: idCart,
-        });
-
-        console.log(cart); 
-
-        cart.Products.push({product: "650f5d6b6ae42ee5b35b2129"}); 
-        let result = await cartsModel.updateOne({
-            _id: idCart,
-        }, cart); */
-
 
     }
 
     async createcart() {
-        //console.log(idCart);
-        //console.log(idProduct); 
-        //let cartobject = {};
+    
         console.log("Creo carro");
 
         const cart = await servicescarts.createnewcart();
-        //const cart = await cartsModel.create(cartobject);
 
         console.log(cart);
 
@@ -143,22 +109,8 @@ class CartManagerMongo {
         //const deleteprod = await cartsModel.findOneAndUpdate({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
 
         //const deleteprod = await cartsModel.findOneAndDelete({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
-        const deleteprod = await servicescarts.deleteproductfromcart(cid, pid);
+        const deleteprod = await servicescarts.deleteproductfromcart(cid, pid); 
 
-        //const deleteprod = await cartsModel.findOneAndUpdate({ "_id": cid}, { $pull: { Products: { _id: pid } } });
-        //const deleteprod = await cartsModel.findOneAndDelete({ "_id": cid});
-
-        /*const deleteprod = await cartsModel.findOneAndUpdate(
- 
-         {
-       
-           _id: interaction.user.id,
-       
-         },
-       
-         profile
-       
-       );*/
 
         return deleteprod;
 
@@ -166,24 +118,10 @@ class CartManagerMongo {
     }
 
     async updateCart(cid, pid, quantitybody) {
-        //console.log(idCart);
-        //console.log(idProduct); 
-        //let cartobject = {};
+   
         console.log("Update carro");
-        //const updateprod = await cartsModel.findOneAndUpdate({ "_id": cid, Products: { product: pid } }, { $set: { Products: { quantity: quantitybody } } });
-
-        /*let updateprod = await cartsModel.updateOne({
-            "_id": cid,
-            "Products.product": pid
-          }, {
-            $set: {
-              "Products.$.quantity": quantitybody
-            }
-          })*/
 
         let updateprod = await servicescarts.updatecart(cid, pid, quantitybody);
-
-        //console.log(cart);
 
         return updateprod;
     }
@@ -194,8 +132,6 @@ class CartManagerMongo {
         console.log("Entro a traer todos los productos del carrito con populate");
 
         console.log(cid);
-
-        /*const populateCartprod = await cartsModel.find({_id : cid}).populate('Products.product').lean();*/
 
         const populateCartprod = await servicescarts.getcartproducts(cid);
 

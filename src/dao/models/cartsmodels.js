@@ -4,10 +4,6 @@ const cartsCollections = "carts";
 
 const cartsSchema = new mongoose.Schema({
 
-    /*idProduct: {
-        type: String,
-        required: true
-    },*/
 
     Products: {
         type: [
@@ -27,12 +23,6 @@ const cartsSchema = new mongoose.Schema({
         default:[]
     },
 
-    
-
-    /*quantity: {
-        type: Number,
-        required: true
-    },*/
 
 })
 

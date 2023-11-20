@@ -60,17 +60,12 @@ const botonesCatalogo = (data) => {
 
         botonNodo.addEventListener("click", () => {
 
-            //const idcart = document.getElementById('idcart').textContent;
             const cartid = document.getElementById('cartid').innerHTML;
-            //const idcart = document.getElementById('idcart').getAttribute('value'); 
-             
-            //const idcarrito = idcarrito2.toString(); 
+   
             console.log(cartid); 
 
             let idproduct = producto._id;
             console.log("Imprimo iproduct");
-            //const idcarrito = "650f8a995f9deb7531fb7380";
-            //const idcarro = req.session.idcart; 
 
             console.log("ESTAMOS EN INDEXPRODUCTS"); 
 
@@ -79,53 +74,6 @@ const botonesCatalogo = (data) => {
                 idproduct,
             })
 
-            //mostrarCarrito();
         });
     }
 };
-
-
-
-
-/*const idboton = `botonagregar-${data._id}`;
-let botonagregar = document.getElementById(idboton);
-console.log(botonagregar);
-
-botonagregar.addEventListener('click', (event) => {
-    event.preventDefault()
-    console.log(event);
-
-    console.log("entre en el evento submit de carrito");
-    //const idproduct = `botonagregar-${_id}`;
-    let idcarrito = "650f8a995f9deb7531fb7380";
-    //const quantity = 1;
-    //let idaux = document.getElementById(idproducto);
-    socket.emit('addproductCarritodos', {
-        idcarrito,
-        idproduct,
-    })
-    botonagregar.reset()
-
-})*/
-
-//})
-
-/*const idboton = `botonagregar-${data._id}`;
-let botonagregar = document.getElementById("idboton");
-
-botonagregar.addEventListener('click', (event) => {
-    event.preventDefault()
-    console.log(event);
-
-    console.log("entre en el evento submit de carrito");
-    //const idproduct = `botonagregar-${_id}`;
-    let idcarrito = "650f8a995f9deb7531fb7380";
-    //const quantity = 1;
-    //let idaux = document.getElementById(idproducto);
-    socket.emit('addproductCarritodos', {
-        idcarrito,
-        idproduct,
-    })
-    botonagregar.reset()
-
-})*/
