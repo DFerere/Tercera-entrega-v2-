@@ -17,8 +17,14 @@ class CartManagerMongo {
         if (idCart == null) {
 
             let quantity_init = 1;
-            console.log(idCart); 
-            const cartcreate = await servicescarts.create(idCart, idProduct, quantity_init); 
+            console.log(idCart);
+            try {
+                const cartcreate = await servicescarts.create(idCart, idProduct, quantity_init);
+
+            } catch {
+                return "error creando carrito desde cero idcart vino null"
+            }
+
 
             /*const cartcreate = await cartsModel.create({
                 Products: {
@@ -34,7 +40,14 @@ class CartManagerMongo {
             console.log("Entro en el else");
 
             let cart = new Array();
-            cart = await servicescarts.findbyID(idCart);
+
+            try {
+                cart = await servicescarts.findbyID(idCart);
+
+            } catch {
+                return "error buscando carrito"
+            }
+
             /*cart = await cartsModel.findById({
                 _id: idCart,
             });*/
@@ -42,27 +55,37 @@ class CartManagerMongo {
             console.log(cart);
 
             if (cart) {
-                console.log("entro a ese if");
-                let product_find = await cart.Products.find(prod => prod.product == idProduct);
-                console.log(product_find);
+                console.log("imprimo cart");
+                console.log(cart);
+                try {
+                    let product_find = await cart.Products.find(prod => prod.product == idProduct);
+                    console.log(product_find);
 
-                if (product_find) {
+                    if (product_find) {
 
-                    product_find.quantity += 1;
+                        product_find.quantity += 1;
 
-                    //const sum_quantity = quantity + 1; 
+                        //const sum_quantity = quantity + 1; 
 
-                    cart.save();
-                    //console.log(cart); 
+                        cart.save();
+                        //console.log(cart); 
 
-                } else {
+                    } else {
 
-                    console.log("Entro al segundo else");
-                    let quantity_init = 1;
+                        console.log("Entro al segundo else");
+                        let quantity_init = 1;
 
-                    cart.Products.push({ product: idProduct, quantity: 1 });
-                    cart.save();
+                        cart.Products.push({ product: idProduct, quantity: 1 });
+                        cart.save();
+                        console.log("Todo bien agregando producto al carrito"); 
+                    }
+
+                } catch {
+                    return "Error buscando producto dentro de carrito";
                 }
+
+
+
 
             } /*else {
 
@@ -120,7 +143,7 @@ class CartManagerMongo {
         //const deleteprod = await cartsModel.findOneAndUpdate({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
 
         //const deleteprod = await cartsModel.findOneAndDelete({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
-        const deleteprod = await servicescarts.deleteproductfromcart(cid, pid); 
+        const deleteprod = await servicescarts.deleteproductfromcart(cid, pid);
 
         //const deleteprod = await cartsModel.findOneAndUpdate({ "_id": cid}, { $pull: { Products: { _id: pid } } });
         //const deleteprod = await cartsModel.findOneAndDelete({ "_id": cid});
@@ -174,8 +197,8 @@ class CartManagerMongo {
 
         /*const populateCartprod = await cartsModel.find({_id : cid}).populate('Products.product').lean();*/
 
-        const populateCartprod = await servicescarts.getcartproducts(cid); 
- 
+        const populateCartprod = await servicescarts.getcartproducts(cid);
+
         return populateCartprod;
 
 

@@ -26,11 +26,18 @@ class carts {
 
     async findbyID(idCart){
 
-        const cart = await cartsModel.findById({
-            _id: idCart,
-        });
+        try {
+            const cart = await cartsModel.findById({
+                _id: idCart,
+            });
+    
+            return cart;
 
-        return cart; 
+        } catch{
+            return "Error al buscar carrito"; 
+        }
+
+         
 
     }
 

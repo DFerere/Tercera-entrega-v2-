@@ -224,11 +224,21 @@ socketServer.on('connection', async socket => {
       //const response = await carritoMongo.createcart();
     } else {
       console.log("Vamos agregar un producto al carrito");
-      console.log(cartid); 
+      console.log(idprod.cartid);
+      const idcart = idprod.cartid;
+      const idcartstring = idcart.toString(); 
+      const idcartstring2 = idcartstring.trim(); 
+      console.log(idcart); 
+      console.log(idcartstring2); 
       //const user = await usermongo.finduseremail(emailuser); 
       //console.log(user); 
-      //const response2 = await carritoMongo.addProductCart(idcarrito, idproduct);
-      //console.log(response);
+      //try {
+        const response = await carritoMongo.addProductCart(idcartstring2, idproduct);
+        console.log(response);
+     // } catch{
+        //console.log("Fallo agregar producto al carrito"); 
+     // }
+      
     }
 
     //const allproducts = await productosMongo.getallProducts();
