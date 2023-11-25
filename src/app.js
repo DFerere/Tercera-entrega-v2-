@@ -193,15 +193,13 @@ socketServer.on('connection', async socket => {
       const idcartstring = idcart.toString(); 
       const idcartstring2 = idcartstring.trim(); 
       console.log(idcart); 
-      console.log(idcartstring2); 
-      //const user = await usermongo.finduseremail(emailuser); 
-      //console.log(user); 
-      //try {
+      console.log(idcartstring2);  
+      try {
         const response = await carritoMongo.addProductCart(idcartstring2, idproduct);
         console.log(response);
-     // } catch{
-        //console.log("Fallo agregar producto al carrito"); 
-     // }
+     } catch{
+        console.log("Fallo agregar producto al carrito"); 
+     }
       
     }
 
