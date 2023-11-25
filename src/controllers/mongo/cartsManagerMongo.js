@@ -33,10 +33,7 @@ class CartManagerMongo {
 
             let cart = new Array();
             cart = await servicescarts.findbyID(idCart);
-            /*cart = await cartsModel.findById({
-                _id: idCart,
-            });*/
-
+          
             console.log(cart);
 
             if (cart) {
@@ -50,10 +47,8 @@ class CartManagerMongo {
 
                     product_find.quantity += 1;
 
-                    //const sum_quantity = quantity + 1; 
 
                     cart.save();
-                    //console.log(cart); 
 
                     } else {
 
@@ -69,17 +64,7 @@ class CartManagerMongo {
                     return "Error buscando producto dentro de carrito";
                 }
 
-            } /*else {
-
-                let quantity_init = 1;
-
-                cart.Products.push({ product: idProduct, quantity: quantity_init });
-
-            }*/
-
-
-
-            // cart.Products.insertOne({product: idProduct})
+            } 
 
 
         }
@@ -105,10 +90,6 @@ class CartManagerMongo {
 
         console.log(cid);
         console.log(pid);
-
-        //const deleteprod = await cartsModel.findOneAndUpdate({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
-
-        //const deleteprod = await cartsModel.findOneAndDelete({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
         const deleteprod = await servicescarts.deleteproductfromcart(cid, pid); 
 
 
