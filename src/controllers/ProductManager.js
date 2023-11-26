@@ -103,8 +103,6 @@ class ProductManager {
   }
 
   async getproductByID(idfind2) { //busqueda de productos por ID
-    
-    //console.log(typeof (idfind));
     const idfind = idfind2.id; 
     try {
       if (!fs.existsSync(archivo)) { //valida que exista el archivo
