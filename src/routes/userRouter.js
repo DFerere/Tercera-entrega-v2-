@@ -9,6 +9,7 @@ import adminpermissionsRoutes from '../middlewares/authorizationadmin.js';
 import CustomError from '../repository/errors/CustomError.js';
 import EErrors from '../repository/errors/EErrors.js';
 import { generateUserErrorInfo } from '../repository/errors/Info.js';
+import { logger } from '../utils/logger.js';
 
 dotenv.config();
 
@@ -82,11 +83,14 @@ router.post('/login_passport',
 
 
         console.log(req.session.rol);
+        logger.info('Usuario hizo login: ' + req.session.email); 
 
         if (req.session.rol === 'user') {
-            res.redirect('/ecommerce/user/user'); 
+            res.redirect('/ecommerce/user/user');
+            logger.info('Ingreso usuario'); 
         } else {
-            res.redirect('/ecommerce/user/admin'); 
+            res.redirect('/ecommerce/user/admin');
+            logger.info('Ingreso usuario administrador');  
         };
 
 

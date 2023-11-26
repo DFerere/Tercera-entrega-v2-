@@ -6,7 +6,7 @@ import productsfakermanager from '../controllers/ProductsManagerFake.js';
 import CustomError from '../repository/errors/CustomError.js';
 import EErrors from '../repository/errors/EErrors.js';
 import { generateRegisterUserErrorInfo, generateUserErrorInfo, generateCreateProductErrorInfo } from '../repository/errors/Info.js';
-
+import { logger } from '../utils/logger.js';
 
 const router = Router();
 
@@ -77,8 +77,10 @@ router.post('/management/create', async (req, res) => { //creas productos
 
     try {
         const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category);
+        logger.info('Se creo el producto correctamente : ' + req.session.email);
         return res.redirect('/mongo/products/management');
     } catch {
+        logger.info('Fallo la creacion del producto : ' + req.session.email);
         res.send("Hubo un error creando el producto");
     };
 })
@@ -95,8 +97,10 @@ router.delete("/management/delete", async (req, res) => { //borras productos
 
     try {
         const deleteproduct = await serviceproducts.deleteproducts(id);
+        logger.info('Se elimino el producto correctamente : ' + req.session.email + id);
 
     } catch {
+        logger.fatal('Error eliminando el producto: ' + req.session.email);
         res.send("Hubo un error eliminando el producto");
     };
 
@@ -114,8 +118,10 @@ router.put("/management/update", async (req, res) => { //actualiza productos
 
     try {
         const deleteproduct = await serviceproducts.updateproducts(id, element, value);
+        logger.info('Se actualizo el producto correctamente: ' + req.session.email);
 
     } catch {
+        logger.fatal('Hubo un error actualizando el producto : ' + req.session.email + id);
         send.res("Hubo un error actualizando el producto");
     };
 

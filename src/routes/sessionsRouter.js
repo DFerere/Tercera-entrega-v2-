@@ -3,12 +3,14 @@ import privateRoutes from '../middlewares/privateroutes.js';
 import CustomError from '../repository/errors/CustomError.js';
 import EErrors from '../repository/errors/EErrors.js';
 import { generateRegisterUserErrorInfo, generateUserErrorInfo } from '../repository/errors/Info.js';
+import { logger } from '../utils/logger.js';
 
 const router = Router(); 
 
 router.get('/login', async (req, res)  => { //entra a vista de login
-
+    logger.info('Ingreso a pagina de Login'); 
     if(req.session.isLogged){
+        logger.info('usuario ya estaba logueado'); 
         return res.redirect('/ecommerce/home/profile'); 
     };
 
@@ -30,6 +32,7 @@ router.get('/profile', async (req, res)  => { //entra a vista de login
 
     const { username, email } = req.session;
     console.log(username);
+    logger.info('usuario ingreso a su perfil: ' + email);
 
     if(!req.session.isLogged){
         return res.redirect('/ecommerce/home/login'); 
@@ -40,6 +43,8 @@ router.get('/profile', async (req, res)  => { //entra a vista de login
 
 router.get('/logout', async (req, res)  => { //entra a vista de login
 
+    logger.info('Usuario hizo logout: ' + req.session.email);
+
     req.session.destroy(); 
 
     res.redirect('/ecommerce/home/login');
@@ -47,6 +52,7 @@ router.get('/logout', async (req, res)  => { //entra a vista de login
 
 router.get("/failurelogin", async (req, res) => {
     const email = req.body.email; 
+    logger.error('Fallo login del usuario: ' + email);
     if(!email){
         CustomError.createError({
             name: "Email errado",
@@ -61,7 +67,8 @@ router.get("/failurelogin", async (req, res) => {
 
 router.get("/failregister", async (req, res) => { 
 
-    const {first_name, last_name, username, email, age}  = req.body; 
+    const {first_name, last_name, username, email, age}  = req.body;
+    logger.error('Fallo registro del usuario: ' + email);
     if(!email || !first_name || !last_name || age || !username){
         CustomError.createError({
             name: "Error en dato de registro",

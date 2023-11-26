@@ -23,7 +23,8 @@ export default {
     admin2: process.env.ADMIN_EMAIL_2,
     mongourl: process.env.MONGO_URL,
     email: process.env.EMAIL_MAILING, 
-    password: process.env.PASSWORD_MAILING
+    password: process.env.PASSWORD_MAILING,
+    environment: process.env.ENVIRONMENT
 
 } 
 

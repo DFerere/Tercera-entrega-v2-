@@ -3,6 +3,7 @@ const productos = new ProductManagerMongo(); //instanciamos clase que maneja pro
 import { cartsModel } from '../../dao/models/cartsmodels.js';
 import carts from '../../repository/servicescart.js';
 import products from '../../repository/servicesproducts.js';
+import { logger } from '../../utils/logger.js';
 
 const servicescarts = new carts();
 
@@ -20,9 +21,12 @@ class CartManagerMongo {
             console.log(idCart);
             try {
                 const cartcreate = await servicescarts.create(idCart, idProduct, quantity_init);
+                logger.info("se creo carrito con exito");
 
             } catch {
-                return "error creando carrito desde cero idcart vino null"
+                logger.error("error creando carrito para añadir producto");
+                return "error creando carrito desde cero idcart vino null";
+
             }
 
 
@@ -40,6 +44,7 @@ class CartManagerMongo {
             console.log(cart);
 
             if (cart) {
+                logger.info("carrito existe para agregar producto");
                 console.log("imprimo cart");
                 console.log(cart);
                 try {
@@ -48,24 +53,28 @@ class CartManagerMongo {
 
                     if (product_find) {
 
-                    product_find.quantity += 1;
+                        logger.info("Producto existe en el carrito");
 
-                    //const sum_quantity = quantity + 1; 
+                        product_find.quantity += 1;
 
-                    cart.save();
-                    //console.log(cart); 
+                        //const sum_quantity = quantity + 1; 
+
+                        cart.save();
+                        //console.log(cart); 
 
                     } else {
 
                         console.log("Entro al segundo else");
                         let quantity_init = 1;
+                        logger.info("producto no existe en el carrito");
 
                         cart.Products.push({ product: idProduct, quantity: 1 });
                         cart.save();
-                        console.log("Todo bien agregando producto al carrito"); 
+                        console.log("Todo bien agregando producto al carrito");
                     }
 
                 } catch {
+                    logger.fatal("Una falla al buscar producto en el carrito");
                     return "Error buscando producto dentro de carrito";
                 }
 
@@ -89,14 +98,24 @@ class CartManagerMongo {
     }
 
     async createcart() {
-    
+
         console.log("Creo carro");
 
-        const cart = await servicescarts.createnewcart();
+        try {
+            const cart = await servicescarts.createnewcart();
 
-        console.log(cart);
+            console.log(cart);
+            logger.info("se creo carrito con exito");
 
-        return cart;
+            return cart;
+
+        } catch {
+
+            logger.fatal("Hubo una falla creando carrito");
+
+        };
+
+
     }
 
     async deleteProduct(cid, pid) {
@@ -109,33 +128,61 @@ class CartManagerMongo {
         //const deleteprod = await cartsModel.findOneAndUpdate({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
 
         //const deleteprod = await cartsModel.findOneAndDelete({ "_id": cid}, { $pull: { "Products.product": { _id: pid } } });
-        const deleteprod = await servicescarts.deleteproductfromcart(cid, pid); 
+        try {
+
+            const deleteprod = await servicescarts.deleteproductfromcart(cid, pid);
+            logger.info("se borro el producto del carrito de forma exitosa");
+            return deleteprod;
 
 
-        return deleteprod;
+        } catch {
+
+            logger.fatal("no se pudo borrar producto del carrito")
+
+
+        }
 
 
     }
 
     async updateCart(cid, pid, quantitybody) {
-   
+
         console.log("Update carro");
 
-        let updateprod = await servicescarts.updatecart(cid, pid, quantitybody);
+        try {
 
-        return updateprod;
+            let updateprod = await servicescarts.updatecart(cid, pid, quantitybody);
+            logger.info("se actualizo carrito con exito")
+            return updateprod;
+
+        } catch {
+
+            logger.fatal("hubo un error actualizando el carrito");
+        }
+
+
     }
 
 
     async getCartProducts(cid) {
 
-        console.log("Entro a traer todos los productos del carrito con populate");
+        try {
+            console.log("Entro a traer todos los productos del carrito con populate");
 
-        console.log(cid);
+            console.log(cid);
 
-        const populateCartprod = await servicescarts.getcartproducts(cid);
+            const populateCartprod = await servicescarts.getcartproducts(cid);
 
-        return populateCartprod;
+            logger.info("Se obtuvo productos del carrito con exito"); 
+
+            return populateCartprod;
+
+        } catch {
+
+            logger.fatal("no se pudo traer productos del carrito"); 
+        }
+
+        
 
 
     }

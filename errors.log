@@ -1,0 +1,248 @@
+2023-11-26T18:14:50.035Z [logs] error: GET en /ecommerce/home/login
+2023-11-26T18:16:22.012Z [logs] error: GET en /ecommerce/home/login
+2023-11-26T18:16:22.124Z [logs] http: hubo error
+2023-11-26T18:16:23.985Z [logs] error: GET en /ecommerce/home/login
+2023-11-26T18:16:24.088Z [logs] http: hubo error
+2023-11-26T18:20:16.217Z [logs] error: GET en /ecommerce/home/login
+2023-11-26T18:20:16.319Z [logs] http: hubo error
+2023-11-26T18:23:47.281Z [logs] error: POST en /ecommerce/user/login_passport
+2023-11-26T18:23:47.785Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-11-26T18:23:47.795Z [logs] error: GET en /ecommerce/user/user
+2023-11-26T18:25:24.492Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T18:25:24.587Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T18:25:25.119Z [logs] info: Ingreso a pagino de Login
+2023-11-26T18:25:34.051Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T18:25:34.488Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-11-26T18:25:34.491Z [logs] info: Ingreso usuario administrador
+2023-11-26T18:25:34.496Z [logs] info: GET en /ecommerce/user/user
+2023-11-26T18:29:44.835Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T18:29:44.935Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T18:29:44.947Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T18:29:45.765Z [logs] info: Ingreso a pagino de Login
+2023-11-26T18:30:53.275Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T18:30:53.836Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-11-26T18:30:53.838Z [logs] info: Ingreso usuario
+2023-11-26T18:30:53.844Z [logs] info: GET en /ecommerce/user/user
+2023-11-26T18:30:56.048Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T18:30:56.318Z [logs] info: Usuario hizo logout: davidferere@gmail.com
+2023-11-26T18:30:56.322Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T18:30:56.449Z [logs] info: Ingreso a pagino de Login
+2023-11-26T18:34:49.154Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T18:34:49.406Z [logs] info: GET en /api/sessions/failurelogin
+2023-11-26T18:34:49.521Z [logs] error: Fallo login del usuario: undefined
+2023-11-26T18:35:32.585Z [logs] info: GET en /api/sessions/failurelogin
+2023-11-26T18:35:32.690Z [logs] error: Fallo login del usuario: undefined
+2023-11-26T18:35:49.757Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T18:35:49.861Z [logs] info: Ingreso a pagino de Login
+2023-11-26T19:02:58.673Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T19:02:58.838Z [logs] info: Ingreso a pagina de Login
+2023-11-26T19:03:04.819Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T19:03:05.460Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T19:03:05.464Z [logs] info: Ingreso usuario administrador
+2023-11-26T19:03:05.469Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T19:03:29.115Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T19:03:29.905Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T19:03:29.913Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T19:03:30.965Z [logs] info: Ingreso a pagina de Login
+2023-11-26T19:03:31.821Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T19:03:32.061Z [logs] info: Ingreso a pagina de Login
+2023-11-26T19:03:37.901Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T19:03:38.608Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T19:03:38.610Z [logs] info: Ingreso usuario administrador
+2023-11-26T19:03:38.614Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T19:05:10.622Z [logs] info: GET en /mongo/products/management?
+2023-11-26T19:36:55.715Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T19:36:56.256Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T19:36:56.265Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T19:36:56.821Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:04:09.020Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:04:09.201Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:04:17.527Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:04:18.254Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:04:18.258Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:04:18.264Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:04:21.776Z [logs] info: GET en /loggerTest?
+2023-11-26T21:04:22.065Z [logs] debug: 
+2023-11-26T21:04:22.066Z [logs] http: 
+2023-11-26T21:04:22.067Z [logs] info: 
+2023-11-26T21:04:22.067Z [logs] warning: 
+2023-11-26T21:04:22.068Z [logs] error: 
+2023-11-26T21:04:22.068Z [logs] fatal: 
+2023-11-26T21:08:36.811Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:08:36.982Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:08:36.992Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:08:37.865Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:08:50.342Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:08:50.961Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:08:50.964Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:08:50.969Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:08:54.264Z [logs] info: GET en /loggerTest?
+2023-11-26T21:08:54.572Z [logs] debug: 
+2023-11-26T21:08:54.573Z [logs] http: 
+2023-11-26T21:08:54.573Z [logs] info: 
+2023-11-26T21:08:54.573Z [logs] warning: 
+2023-11-26T21:08:54.574Z [logs] error: 
+2023-11-26T21:08:54.574Z [logs] fatal: 
+2023-11-26T21:09:47.778Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:09:47.913Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:09:47.924Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:09:48.808Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:09:56.492Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:09:57.080Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:09:57.083Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:09:57.090Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:09:59.280Z [logs] info: GET en /loggerTest?
+2023-11-26T21:09:59.597Z [logs] debug: 
+2023-11-26T21:09:59.597Z [logs] http: 
+2023-11-26T21:09:59.598Z [logs] info: 
+2023-11-26T21:09:59.598Z [logs] warning: 
+2023-11-26T21:09:59.598Z [logs] error: 
+2023-11-26T21:09:59.599Z [logs] fatal: 
+2023-11-26T21:11:02.822Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:11:02.990Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:11:03.000Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:11:03.830Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:11:08.698Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:11:09.386Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:11:09.388Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:11:09.395Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:11:10.547Z [logs] info: GET en /loggerTest?
+2023-11-26T21:11:10.823Z [logs] debug: 
+2023-11-26T21:11:10.824Z [logs] http: 
+2023-11-26T21:11:10.824Z [logs] info: 
+2023-11-26T21:11:10.825Z [logs] warning: 
+2023-11-26T21:11:10.825Z [logs] error: 
+2023-11-26T21:11:10.825Z [logs] fatal: 
+2023-11-26T21:13:23.616Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:13:24.232Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:13:24.242Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:13:25.197Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:13:29.952Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:13:30.548Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:13:30.551Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:13:30.555Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:13:32.042Z [logs] info: GET en /loggerTest?
+2023-11-26T21:13:32.321Z [logs] debug: 
+2023-11-26T21:13:32.322Z [logs] http: 
+2023-11-26T21:13:32.322Z [logs] info: 
+2023-11-26T21:13:32.322Z [logs] warning: 
+2023-11-26T21:13:32.323Z [logs] error: 
+2023-11-26T21:13:32.323Z [logs] fatal: 
+2023-11-26T21:14:14.753Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:14:14.877Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:14:14.886Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:14:15.762Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:14:38.447Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:14:39.107Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:14:39.109Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:14:39.113Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:14:40.971Z [logs] info: GET en /loggerTest?
+2023-11-26T21:14:41.220Z [logs] debug: 
+2023-11-26T21:14:41.221Z [logs] http: 
+2023-11-26T21:14:41.221Z [logs] info: 
+2023-11-26T21:14:41.221Z [logs] warning: 
+2023-11-26T21:14:41.222Z [logs] error: 
+2023-11-26T21:14:41.222Z [logs] fatal: 
+2023-11-26T21:15:39.746Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:15:39.904Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:15:39.914Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:15:40.878Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:15:46.332Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:15:46.953Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:15:46.955Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:15:46.961Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:15:48.231Z [logs] info: GET en /loggerTest?
+2023-11-26T21:17:00.931Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:17:01.099Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:17:01.107Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:17:01.913Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:17:07.526Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:17:08.186Z [logs] info: Usuario hizo login: adminCoder@coder.com
+2023-11-26T21:17:08.188Z [logs] info: Ingreso usuario administrador
+2023-11-26T21:17:08.192Z [logs] info: GET en /ecommerce/user/admin
+2023-11-26T21:17:11.211Z [logs] info: GET en /loggerTest?
+2023-11-26T21:17:11.483Z [logs] debug: 
+2023-11-26T21:17:11.484Z [logs] http: 
+2023-11-26T21:17:11.484Z [logs] info: 
+2023-11-26T21:17:11.484Z [logs] warning: 
+2023-11-26T21:17:11.484Z [logs] error: 
+2023-11-26T21:17:11.485Z [logs] fatal: 
+2023-11-26T21:39:26.961Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:39:27.146Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:39:27.155Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:39:28.121Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:39:33.939Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:39:34.659Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-11-26T21:39:34.661Z [logs] info: Ingreso usuario
+2023-11-26T21:39:34.665Z [logs] info: GET en /ecommerce/user/user
+2023-11-26T21:39:37.301Z [logs] info: GET en /mongo/products/catalog
+2023-11-26T21:39:37.748Z [logs] info: GET en /js/indexproducts.js
+2023-11-26T21:39:38.469Z [logs] info: obtuvo todos los productos
+2023-11-26T21:39:38.599Z [logs] info: obtuvo todos los productos
+2023-11-26T21:39:38.874Z [logs] info: Se obtuvo productos del carrito con exito
+2023-11-26T21:39:40.605Z [logs] info: carrito existe para agregar producto
+2023-11-26T21:39:40.609Z [logs] info: Producto existe en el carrito
+2023-11-26T21:39:42.231Z [logs] info: carrito existe para agregar producto
+2023-11-26T21:39:42.234Z [logs] info: producto no existe en el carrito
+2023-11-26T21:39:56.544Z [logs] info: carrito existe para agregar producto
+2023-11-26T21:39:56.546Z [logs] info: producto no existe en el carrito
+2023-11-26T21:40:06.077Z [logs] info: POST en /mongo/carts/65557019a4c693539f6ed5d4/purchase
+2023-11-26T21:40:06.232Z [logs] info: Procedio a la compra: undefined
+2023-11-26T21:40:06.237Z [logs] fatal: No se pudo crear ticket de compra
+2023-11-26T21:40:06.237Z [logs] info: Se creo ticket de compra para: undefined
+2023-11-26T21:40:47.307Z [logs] info: obtuvo todos los productos
+2023-11-26T21:40:47.443Z [logs] info: obtuvo todos los productos
+2023-11-26T21:40:47.690Z [logs] info: Se obtuvo productos del carrito con exito
+2023-11-26T21:40:48.409Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:40:48.604Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:40:48.609Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:40:48.748Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:40:55.188Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:40:55.932Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-11-26T21:40:55.934Z [logs] info: Ingreso usuario
+2023-11-26T21:40:55.938Z [logs] info: GET en /ecommerce/user/user
+2023-11-26T21:40:58.755Z [logs] info: GET en /ecommerce/home/profile?
+2023-11-26T21:40:59.126Z [logs] info: usuario ingreso a su perfil: davidferere@gmail.com
+2023-11-26T21:41:26.589Z [logs] info: GET en /mongo/products/catalog
+2023-11-26T21:42:04.221Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:42:04.358Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:42:04.366Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:42:05.299Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:42:16.616Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:42:17.349Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-11-26T21:42:17.351Z [logs] info: Ingreso usuario
+2023-11-26T21:42:17.357Z [logs] info: GET en /ecommerce/user/user
+2023-11-26T21:42:18.840Z [logs] info: GET en /mongo/products/catalog
+2023-11-26T21:42:19.340Z [logs] info: GET en /js/indexproducts.js
+2023-11-26T21:42:19.962Z [logs] info: obtuvo todos los productos
+2023-11-26T21:42:20.090Z [logs] info: obtuvo todos los productos
+2023-11-26T21:42:20.447Z [logs] info: Se obtuvo productos del carrito con exito
+2023-11-26T21:42:22.337Z [logs] info: carrito existe para agregar producto
+2023-11-26T21:42:22.340Z [logs] info: Producto existe en el carrito
+2023-11-26T21:42:37.831Z [logs] info: GET en /ecommerce/home/profile?
+2023-11-26T21:42:38.004Z [logs] info: usuario ingreso a su perfil: undefined
+2023-11-26T21:42:38.009Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:42:38.134Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:42:44.328Z [logs] info: GET en /ecommerce/home/logout?
+2023-11-26T21:42:44.487Z [logs] info: Usuario hizo logout: undefined
+2023-11-26T21:42:44.492Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:42:44.643Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:42:54.041Z [logs] info: GET en /ecommerce/home/login
+2023-11-26T21:42:55.196Z [logs] info: Ingreso a pagina de Login
+2023-11-26T21:43:04.478Z [logs] info: POST en /ecommerce/user/login_passport
+2023-11-26T21:43:05.083Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-11-26T21:43:05.087Z [logs] info: Ingreso usuario
+2023-11-26T21:43:05.091Z [logs] info: GET en /ecommerce/user/user
+2023-11-26T21:43:15.891Z [logs] info: GET en /ecommerce/home/profile?
+2023-11-26T21:43:16.191Z [logs] info: usuario ingreso a su perfil: davidferere@gmail.com
+2023-11-26T21:43:18.695Z [logs] info: GET en /ecommerce/home/profile?
+2023-11-26T21:43:18.947Z [logs] info: usuario ingreso a su perfil: davidferere@gmail.com
+2023-11-26T21:43:26.487Z [logs] info: GET en /mongo/products/catalog
+2023-11-26T21:43:26.982Z [logs] info: GET en /js/indexproducts.js
+2023-11-26T21:43:27.635Z [logs] info: obtuvo todos los productos
+2023-11-26T21:43:27.759Z [logs] info: obtuvo todos los productos
+2023-11-26T21:43:28.042Z [logs] info: Se obtuvo productos del carrito con exito
+2023-11-26T21:43:42.163Z [logs] info: POST en /mongo/carts/65557019a4c693539f6ed5d4/purchase
+2023-11-26T21:43:42.456Z [logs] info: Procedio a la compra: davidferere@gmail.com
+2023-11-26T21:43:42.659Z [logs] info: se creo ticket de compra
+2023-11-26T21:43:42.659Z [logs] info: Se creo ticket de compra para: davidferere@gmail.com

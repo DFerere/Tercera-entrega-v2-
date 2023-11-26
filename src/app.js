@@ -12,6 +12,7 @@ import chatRouterMongo from './routes/chatRouterMongo.js';
 import sessionRouter from './routes/sessionsRouter.js'; 
 import userRouter from './routes/userRouter.js';
 import adminManagement from './routes/realproductsRouterHandlebars2.js';
+import loggerRouter from './routes/loggerRouter.js'
 
 
 import ProductManagerMongo from './controllers/mongo/productsManagerMongo.js';
@@ -32,6 +33,9 @@ import errorHandler from './middlewares/indexerror.js';
 
 import compression from 'express-compression'; 
 
+import { errors } from './middlewares/errorsLogger.js';
+import { logger } from './utils/logger.js';
+
 const program = new Command(); 
 
 const productosMongo = new ProductManagerMongo();
@@ -43,7 +47,9 @@ console.log(config.port);
 
 const port = parseInt(config.port); 
 
-console.log(port); 
+console.log(port);
+
+dotenv.config(); 
 
 
 const app = express();
@@ -54,7 +60,10 @@ const httpServer = app.listen(port, () => console.log("Servidor corriendo!!"));
 const socketServer = new Server(httpServer);
 
 app.engine('handlebars', handlebars.engine());
- 
+
+//usamos logger de winston 
+app.use(errors);
+
 
 //Usamos compresion de datos de transferencia 
 
@@ -107,6 +116,8 @@ app.use('/ecommerce/user', userRouter); //Ruta de usarios
 app.use('/api', cartsRouterMongo);
 
 app.use('/api/sessions', sessionRouter);
+
+app.use('/loggerTest', loggerRouter); //testear Logger
 
 app.use('/api/chat', chatRouterMongo); //endpoint del chat
 
@@ -196,12 +207,13 @@ socketServer.on('connection', async socket => {
       console.log(idcartstring2); 
       //const user = await usermongo.finduseremail(emailuser); 
       //console.log(user); 
-      //try {
+      try {
         const response = await carritoMongo.addProductCart(idcartstring2, idproduct);
         console.log(response);
-     // } catch{
+      } catch{
+        logger.error("Error al agregar producto al carrito"); 
         //console.log("Fallo agregar producto al carrito"); 
-     // }
+      }
       
     }
 

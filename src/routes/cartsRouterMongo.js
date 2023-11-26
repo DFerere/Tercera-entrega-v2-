@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import CartManagerMongo from '../controllers/mongo/cartsManagerMongo.js';
 import TicketManagerMongo from '../controllers/mongo/ticketManagerMongo.js';
+import { logger } from '../utils/logger.js';
 
 const router = Router();
 
@@ -97,6 +98,8 @@ router.get("/products/:cid", async (req, res) => {
 
 router.post("/:cid/purchase", async (req, res) => {
 
+    logger.info('Procedio a la compra: ' + req.session.email);
+
     var cid = req.params.cid;
 
     console.log(cid);
@@ -107,9 +110,15 @@ router.post("/:cid/purchase", async (req, res) => {
     
     const purchaser = objectsession.email; 
 
-    const ticketcreator = await ticket.createticket(purchaser); //llamamos funcion que crea ticket
+    try {
+        const ticketcreator = await ticket.createticket(purchaser); //llamamos funcion que crea ticket
+        logger.info('Se creo ticket de compra para: ' + req.session.email);
+        console.log(ticketcreator);
 
-    console.log(ticketcreator); 
+    } catch {
+        logger.fatal('Fallo la creacion de ticket para: ' + req.session.email);
+
+    } 
 
 
     return res.send("PURCHASE");

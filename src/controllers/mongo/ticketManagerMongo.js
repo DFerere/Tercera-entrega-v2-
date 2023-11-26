@@ -3,6 +3,7 @@ const productos = new ProductManagerMongo(); //instanciamos clase que maneja pro
 import { cartsModel } from '../../dao/models/cartsmodels.js';
 import ticketsrepository from '../../repository/repositoryticket.js';
 import products from '../../repository/servicesproducts.js';
+import { logger } from '../../utils/logger.js'; 
 
 const ticket = new ticketsrepository();
 
@@ -40,10 +41,13 @@ class TicketManagerMongo {
        try {
             
             const cartcreate = await ticket.createticket(code, datetimestring, amount, purchaser);
+            logger.info("se creo ticket de compra"); 
             return cartcreate;
 
 
         } catch{
+
+            logger.fatal("No se pudo crear ticket de compra"); 
 
             return "Fallo creacion de ticket"; 
 
