@@ -9,7 +9,7 @@ dotenv.config();
 
 class products {
 
-    async create(title, description, price, thumbnail, code, stock, status, category){
+    async create(title, description, price, thumbnail, code, stock, status, category, owner){
         
         console.log("Entre en el create"); 
 
@@ -22,6 +22,7 @@ class products {
             stock,
             status,
             category,
+            owner, 
         }); 
         
         console.log(produ); 
@@ -43,13 +44,24 @@ class products {
 
     }
 
-    async deleteproducts(idproduct) {
+    async deleteproducts(idproduct, owner) {
 
         try { 
-            const delprod = await productsModel.deleteOne({
+            const prodobj = await productsModel.findById({
                 _id: idproduct,
             });
-            return "Se borro correctamente el producto"
+
+            const ownerprodu = prodobj.owner;
+
+            if (ownerprodu === owner || ownerprodu === "admin" || ownerprodu === "ecommerce_admin@ecommerce.com"  || ownerprodu === "adminCoder@coder.com"){
+
+                const delprod = await productsModel.deleteOne({
+                    _id: idproduct,
+                });
+                return "Se borro correctamente el producto";
+
+            }
+            
          } catch {
             return "No se pudo borrar el producto"; 
          } 

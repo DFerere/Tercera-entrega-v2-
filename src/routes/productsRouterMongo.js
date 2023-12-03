@@ -50,8 +50,28 @@ router.get("/failurelogin", async (req, res) => { //vista de falla de login
 
 router.get('/management', async (req, res) => { //redirecciona a vista de gestion de productos
 
-    res.render('productsmanagement');
-})
+    console.log(req.session); 
+    res.render('management');
+});
+
+router.get('/management/createproduct', async (req, res) => { //redirecciona a vista de gestion de productos
+
+    console.log(req.session);
+    const email = req.session.email; 
+
+    res.render('createproducts', {email: email});
+}); 
+
+router.get('/management/deleteproduct', async (req, res) => { //redirecciona a vista de gestion de productos
+    
+    const email = req.session.email;
+    res.render('deleteproducts', {email: email});
+});
+
+router.get('/management/updateproduct', async (req, res) => { //redirecciona a vista de gestion de productos
+
+    res.render('updateproducts');
+});
 
 router.post('/management/create', async (req, res) => { //creas productos
 
@@ -63,8 +83,10 @@ router.post('/management/create', async (req, res) => { //creas productos
     const stock = req.body.stock;
     const status = req.body.status;
     const category = req.body.category;
+    const owner = req.body.owner;
 
     console.log(title);
+    console.log(owner); 
  
     if(!title || !description || !price || !thumbnail || !code || !stock || !status || !category){
         CustomError.createError({
@@ -75,29 +97,43 @@ router.post('/management/create', async (req, res) => { //creas productos
         })
     }
 
+    if(!owner){
+        const owner = "admin";
+
+        try {
+            const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category, owner);
+            logger.info('Se creo el producto correctamente : ' + req.session.email);
+            return res.redirect('/mongo/products/management');
+        } catch {
+            logger.error('Fallo la creacion del producto : ' + req.session.email);
+            res.send("Hubo un error creando el producto");
+        };
+    }; 
+
     try {
-        const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category);
+        const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category, owner);
         logger.info('Se creo el producto correctamente : ' + req.session.email);
         return res.redirect('/mongo/products/management');
     } catch {
-        logger.info('Fallo la creacion del producto : ' + req.session.email);
+        logger.error('Fallo la creacion del producto : ' + req.session.email);
         res.send("Hubo un error creando el producto");
     };
 })
 
-router.delete("/management/delete", async (req, res) => { //borras productos
+router.post("/management/delete", async (req, res) => { //borras productos
 
     console.log("Entramos a delete");
-    console.log(req.body.id);
-    const objectsession = req.session;
-    console.log("este es req session");
-    console.log(req.session.email);
+    console.log(req.body.idproduct);
+    //const objectsession = req.session;
+    console.log("El propietario de quien borra el producto");
+    console.log(req.body.owner);
 
-    const id = req.body.id;
+    const id = req.body.idproduct;
+    const owner = req.body.owner; 
 
     try {
-        const deleteproduct = await serviceproducts.deleteproducts(id);
-        logger.info('Se elimino el producto correctamente : ' + req.session.email + id);
+        const deleteproduct = await serviceproducts.deleteproducts(id, owner);
+        logger.info('Se elimino el producto correctamente : ' + owner + id);
 
     } catch {
         logger.fatal('Error eliminando el producto: ' + req.session.email);

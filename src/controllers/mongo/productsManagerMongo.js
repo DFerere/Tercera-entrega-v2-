@@ -9,11 +9,11 @@ const servicesproducts = new products();
 class ProductManagerMongo {
 
     //Funcion para agregar productos
-    async createproduct(title, description, price, thumbnail, code, stock, status, category) {
+    async createproduct(title, description, price, thumbnail, code, stock, status, category, owner) {
 
         try {
 
-            const produ = await servicesproducts.create(title, description, price, thumbnail, code, stock, status, category);
+            const produ = await servicesproducts.create(title, description, price, thumbnail, code, stock, status, category, owner);
             console.log(produ);
             logger.info("se creo producto con exito");
             return produ;

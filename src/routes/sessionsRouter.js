@@ -69,14 +69,14 @@ router.get("/failregister", async (req, res) => {
 
     const {first_name, last_name, username, email, age}  = req.body;
     logger.error('Fallo registro del usuario: ' + email);
-    if(!email || !first_name || !last_name || age || !username){
+    /*if(!email || !first_name || !last_name || age || !username){
         CustomError.createError({
             name: "Error en dato de registro",
             message: "Error error registrandose", 
             cause: generateRegisterUserErrorInfo({email, first_name, last_name, age}),
             code: EErrors.INVALID_TYPE_ERROR
         })
-    }
+    }*/
 
     res.send("Caramba algo salio mal con el resgitro, al parecer tu correo ya existe"); 
 })

@@ -10,12 +10,14 @@ import CustomError from '../repository/errors/CustomError.js';
 import EErrors from '../repository/errors/EErrors.js';
 import { generateUserErrorInfo } from '../repository/errors/Info.js';
 import { logger } from '../utils/logger.js';
+import TokenManagerMongo from '../controllers/mongo/tokenManagerMongo.js';
 
 dotenv.config();
 
 const router = Router();
 
 const users = new userManager();
+const tokens = new TokenManagerMongo(); 
 
 router.post('/signup', async (req, res) => {
 
@@ -48,11 +50,77 @@ router.post('/sendemail', async (req, res) => {
 
 });
 
+//VISTA PARA ENVIAR EMAIL
+
 router.get('/viewsendemail', async (req, res) => {
 
     res.render('SendEmail');
 
 });
+
+//CAMBIO Y RECUPERACION DE CONTRASEÑA
+
+router.get('/changepassword', async (req, res) => {
+
+    res.render('changepass');
+
+});
+
+router.get('/recovery', async (req, res) => {
+
+    res.render('recovery');
+
+});
+
+router.post('/recovery/newpassword', async (req, res) => {
+
+    const { token, new_password} = req.body;
+    //const { newpassword } = req.body;
+
+    console.log(token);
+    console.log(new_password);
+
+    const response = await tokens.validatetoken(token, new_password);
+    
+    res.send(response);
+
+});
+
+router.post('/changepassword/email', async (req, res) => {
+
+    const { email } = req.body;
+    console.log(email);
+    const token = await tokens.createtoken(email);
+    console.log(token);
+    await users.useremailpassword(email, token);
+    res.send("Correo enviado");
+
+
+});
+
+//PARA CAMBIAR ROL DEL USUARIO
+
+router.get('/rol', async (req, res) => {
+
+    const email = req.session.email;
+
+    try {
+
+        await users.changerol(email);
+        res.send("Se cambio rol con exito");
+
+    } catch {
+
+        logger.error("Fallo el cambio de rol"); 
+        res.send("Fallo cambio de rol"); 
+
+    }
+
+});
+
+
+
+
 
 //REGISTRO CON GITHUB
 router.post('/signup_passport',
@@ -86,9 +154,24 @@ router.post('/login_passport',
         logger.info('Usuario hizo login: ' + req.session.email); 
 
         if (req.session.rol === 'user') {
-            res.redirect('/ecommerce/user/user');
-            logger.info('Ingreso usuario'); 
-        } else {
+            
+            try {
+                res.redirect('/ecommerce/user/user');
+                logger.info('Ingreso usuario'); 
+            } catch {
+                info.error("Fallo redirigir usuario"); 
+            }
+                  
+            
+        };
+        
+        if (req.session.rol === 'premium') {
+            res.redirect('/ecommerce/user/premium');
+            logger.info('Ingreso usuario premium');
+
+        }
+        
+        if (req.session.rol === 'admin') {
             res.redirect('/ecommerce/user/admin');
             logger.info('Ingreso usuario administrador');  
         };
@@ -97,8 +180,7 @@ router.post('/login_passport',
     }
 );
 
-router.get('/user', userpermissionsRoutes, async (req, res) => {
-
+router.get('/user', async (req, res) => { 
 
     req.session.first_name = req.user.first_name;
     req.session.last_name = req.user.last_name;
@@ -107,6 +189,8 @@ router.get('/user', userpermissionsRoutes, async (req, res) => {
     req.session.rol = req.user.rol;
     req.session.idcart = req.user.idcart;
     req.session.isLogged = true;
+
+    logger.info("Entre a /user"); 
 
     res.render('home_user');
 
@@ -123,7 +207,22 @@ router.get('/admin', adminpermissionsRoutes, async (req, res) => {
     req.session.idcart = req.user.idcart;
     req.session.isLogged = true;
 
-    res.render('home_user');
+    res.render('home_admin');
+
+})
+
+router.get('/premium', adminpermissionsRoutes, async (req, res) => {
+
+
+    req.session.first_name = req.user.first_name;
+    req.session.last_name = req.user.last_name;
+    req.session.email = req.user.email;
+    req.session.age = req.user.age;
+    req.session.rol = req.user.rol;
+    req.session.idcart = req.user.idcart;
+    req.session.isLogged = true;
+
+    res.render('home_premium');
 
 })
 

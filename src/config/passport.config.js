@@ -8,6 +8,7 @@ import userManager from '../controllers/userManager.js';
 import user from '../repository/servicesuser.js';
 import cart from '../repository/servicescart.js';
 import { cartsModel } from '../dao/models/cartsmodels.js';
+import { logger } from '../utils/logger.js';
 
 const LocalStrategy = local.Strategy;
 dotenv.config();
@@ -22,38 +23,62 @@ const initializePassport = () => {
             { passReqToCallback: true, usernameField: 'email' },
             async (req, username, password, done) => {
                 const { first_name, last_name, email, age } = req.body;
+                console.log(email);
                 try {
 
 
-                    const userExists = await service.find(username);
+                    try {
+                        const userExists = await service.find(email);
 
 
-                    if (userExists) {
-                        return done(null, false);
-                    }
+                        if (userExists) {
+                            logger.error("Correo ya esta registrado " + email);
+                            return done(null, false);
+                        }
 
-                    if (email == process.env.ADMIN_EMAIL_1 || email == process.env.ADMIN_EMAIL_2) {
-                        const rol = "admin";
-                        const user = await service.create(first_name, last_name, email, age, password, rol);
-              
-                        return done(null, user);
-                    } else {
-                        const rol = "user";
-                        console.log(rol);
-                        let cart1 = {}
-                        cart1 = { Products: [] }
-                        const cart = await servicecart.createnewcart();
-                        console.log(cart);
+                        if (email == process.env.PREMIUM_EMAIL_1 || email == process.env.PREMIUM_EMAIL_2 || email == process.env.PREMIUM_EMAIL_3) {
+                            const rol = "premium";
+                            console.log(rol);
+                            let cart1 = {}
+                            cart1 = { Products: [] }
+                            const cart = await servicecart.createnewcart();
+                            console.log(cart);
 
-                        const user = await service.create(first_name, last_name, email, age, password, rol, cart);
- 
+                            const user = await service.create(first_name, last_name, email, age, password, rol, cart);
+                            //const user = await service.create(first_name, last_name, email, age, password, rol);
 
-                        return done(null, user);
-                    }
+                            return done(null, user);
+                        }
+
+                        if (email == process.env.ADMIN_EMAIL_1 || email == process.env.ADMIN_EMAIL_2) {
+                            const rol = "admin";
+                            const cart = {};
+                            const user = await service.create(first_name, last_name, email, age, password, rol, cart);
+
+                            return done(null, user);
+                        } else {
+                            const rol = "user";
+                            console.log(rol);
+                            let cart1 = {}
+                            cart1 = { Products: [] }
+                            const cart = await servicecart.createnewcart();
+                            console.log(cart);
+
+                            const user = await service.create(first_name, last_name, email, age, password, rol, cart);
+
+
+                            return done(null, user);
+                        }
+
+
+                    } catch {
+                        logger.error("Fallo en buscar usuario para registro: " + email);
+                    };
 
 
                 }
                 catch (error) {
+                    logger.fatal("Error registrando usuario");
                     return done(error);
                 }
             }

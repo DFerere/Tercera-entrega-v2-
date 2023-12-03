@@ -10,8 +10,8 @@ class mailing {
         var transporter = nodemailer.createTransport({
             host: 'smtp.ethereal.email',
             auth: {
-             user: 'anthony44@ethereal.email',
-              pass: '1w1HtFSHHHTnWAACcW'
+             user: 'lulu25@ethereal.email',
+              pass: 'jD2Tdgug98b6ug5HSd'
             },
             tls: {
                 rejectUnauthorized: false
@@ -36,6 +36,45 @@ class mailing {
 
 
     };
+
+
+
+    async changepasswordmailing(token) {
+
+      const tokenvalue = `Copie y pegue el siguiente link en su buscador para recuperar la contraseña http://localhost:8080/ecommerce/user/recovery y coloque el siguiente token: ${token}`;
+      console.log(tokenvalue);
+      const message = tokenvalue.toString(); 
+
+      var transporter = nodemailer.createTransport({
+          host: 'smtp.ethereal.email',
+          auth: {
+           user: 'lulu25@ethereal.email',
+            pass: 'jD2Tdgug98b6ug5HSd'
+          },
+          tls: {
+              rejectUnauthorized: false
+          }
+        });
+        
+        var mailOptions = {
+          from: 'anthony44@ethereal.email',
+          to: 'davidferere@gmail.com',
+          subject: 'Recuperacion de contraseña Ecommerce',
+          text: message, 
+        };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+
+
+
+  };
+
   
 }; 
 

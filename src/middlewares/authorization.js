@@ -5,7 +5,9 @@ const userpermissionsRoutes = (req, res, next) => {
 
     } else {
 
-        return res.render('home_user');
+        return "Entro usuario";
+
+        //return res.render('home_user');
 
     }
 
