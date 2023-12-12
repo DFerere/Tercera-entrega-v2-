@@ -84,6 +84,13 @@ class carts {
 
     }
 
+    async deletecart(cid) {
+
+        const populateCartprod = await cartsModel.deleteOne({_id : cid});
+        return populateCartprod; 
+
+    }
+
 
 }
 

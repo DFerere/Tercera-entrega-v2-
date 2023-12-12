@@ -174,6 +174,29 @@ class CartManagerMongo {
 
     }
 
+    async deleteCart(cid) {
+
+        try {
+            console.log("Entro a eliminar carrito");
+
+            console.log(cid);
+
+            const populateCartprod = await servicescarts.deletecart(cid);
+
+            logger.info("Se elimino carrito"); 
+
+            return populateCartprod;
+
+        } catch {
+
+            logger.fatal("no se pudo eliminar carrito"); 
+        }
+
+        
+
+
+    }
+
 
 }
 

@@ -36,6 +36,10 @@ import compression from 'express-compression';
 import { errors } from './middlewares/errorsLogger.js';
 import { logger } from './utils/logger.js';
 
+import swaggerJsdoc from 'swagger-jsdoc';
+
+import swaggerUiExpress from 'swagger-ui-express';
+
 const program = new Command(); 
 
 const productosMongo = new ProductManagerMongo();
@@ -60,6 +64,33 @@ const httpServer = app.listen(port, () => console.log("Servidor corriendo!!"));
 const socketServer = new Server(httpServer);
 
 app.engine('handlebars', handlebars.engine());
+
+//Usamo swagger
+
+const swaggerOptions = {
+
+  definition: {
+
+    openapi: '3.0.1',
+
+    info: {
+
+      title: 'Documentación API Ecommerce',
+
+      description: 'Documentación',
+
+    },
+
+  },
+
+  //apis: [`${__dirname}/docs/**/*.yaml`],
+  apis: [`${__dirname}/utils/docs/**/*.yaml`],
+
+};
+
+const specs = swaggerJsdoc(swaggerOptions);
+
+app.use('/apidocs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
 //usamos logger de winston 
 app.use(errors);

@@ -14,7 +14,12 @@ router.get("/", async (req, res) => {
     })
 })
 
-router.delete("/carts/:cid/products/:pid", async (req, res) => {
+router.post("/create", async (req, res) => {
+    const response = await carritosMongo.createcart();
+    return res.send(response);
+})
+
+router.delete("/deleteproduct/:cid/products/:pid", async (req, res) => {
 
     var cid = req.params.cid;
     var pid = req.params.pid;
@@ -45,13 +50,13 @@ router.put("/carts/:cid/products/:pid", async (req, res) => {
     return res.send(response);
 })
 
-router.delete("/carts/:cid", async (req, res) => {
+router.delete("/delete/:cid", async (req, res) => {
 
     var cid = req.params.cid;
 
     console.log(cid);
 
-    const response = await carritosMongo.deleteCartProducts(cid);
+    const response = await carritosMongo.deleteCart(cid);
 
 
 
