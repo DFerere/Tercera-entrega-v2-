@@ -103,7 +103,9 @@ router.post('/management/create', async (req, res) => { //creas productos
         try {
             const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category, owner);
             logger.info('Se creo el producto correctamente : ' + req.session.email);
+            res.send(create); 
             return res.redirect('/mongo/products/management');
+            
         } catch {
             logger.error('Fallo la creacion del producto : ' + req.session.email);
             res.send("Hubo un error creando el producto");
@@ -113,7 +115,8 @@ router.post('/management/create', async (req, res) => { //creas productos
     try {
         const create = await serviceproducts.create(title, description, price, thumbnail, code, stock, status, category, owner);
         logger.info('Se creo el producto correctamente : ' + req.session.email);
-        return res.redirect('/mongo/products/management');
+        res.send(create); 
+        //return res.redirect('/mongo/products/management'); //comentado temporalmente para las pruebas de los modulos de testing
     } catch {
         logger.error('Fallo la creacion del producto : ' + req.session.email);
         res.send("Hubo un error creando el producto");
@@ -134,6 +137,7 @@ router.post("/management/delete", async (req, res) => { //borras productos
     try {
         const deleteproduct = await serviceproducts.deleteproducts(id, owner);
         logger.info('Se elimino el producto correctamente : ' + owner + id);
+        res.send("Se borro el producto con exito")
 
     } catch {
         logger.fatal('Error eliminando el producto: ' + req.session.email);
@@ -170,6 +174,20 @@ router.get("/current", async (req, res) => {
     console.log(req.session.email);
 
     res.send(objectsession);
+})
+
+router.get("/getallproducts", async (req, res) => {
+
+    try{
+        const getallproducts = await productosMongo.getallProducts(); 
+        logger.info("OBTUVO TODOS LOS PRODUCTOS"); 
+        res.send(getallproducts); 
+
+    } catch{
+
+        logger.error("NO OBTUVO TODOS LOS PRODUCTOS")
+
+    }
 })
 
 

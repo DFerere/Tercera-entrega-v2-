@@ -50,6 +50,25 @@ router.get('/logout', async (req, res)  => { //entra a vista de login
     res.redirect('/ecommerce/home/login');
 });
 
+router.get('/logout/test', async (req, res)  => { //entra a vista de login
+
+    logger.info('Usuario hizo logout: ' + req.session.email);
+
+    req.session.destroy(); 
+
+    res.send("Logout exitoso");
+});
+
+//obtener sesiones activas
+router.get('/activesessions', async (req, res)  => { //entra a vista de login
+
+    logger.info('Usuario hizo logout: ' + req.session.email);
+
+    
+
+    res.send("Logout exitoso");
+});
+
 router.get("/failurelogin", async (req, res) => {
     const email = req.body.email; 
     logger.error('Fallo login del usuario: ' + email);

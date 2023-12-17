@@ -1313,3 +1313,220 @@
 2023-12-12T02:02:12.657Z [logs] info: POST en /mongo/carts/create
 2023-12-12T02:02:56.152Z [logs] info: POST en /mongo/carts/create
 2023-12-12T02:02:56.380Z [logs] info: se creo carrito con exito
+2023-12-17T17:29:26.259Z [logs] info: GET en /api/products/management
+2023-12-17T17:29:27.656Z [logs] info: se obtuvo productos con paginacion
+2023-12-17T17:29:44.344Z [logs] info: GET en /api/products/management
+2023-12-17T17:29:44.453Z [logs] info: se obtuvo productos con paginacion
+2023-12-17T17:29:50.877Z [logs] info: GET en /api/products/management
+2023-12-17T17:29:50.952Z [logs] info: se obtuvo productos con paginacion
+2023-12-17T17:30:11.879Z [logs] info: GET en /api/products/management
+2023-12-17T17:30:11.984Z [logs] info: se obtuvo productos con paginacion
+2023-12-17T17:33:01.683Z [logs] info: GET en /mongo/carts/
+2023-12-17T17:33:01.751Z [logs] info: GET en /js/index.js
+2023-12-17T17:33:01.780Z [logs] info: GET en /favicon.ico
+2023-12-17T17:33:01.860Z [logs] info: obtuvo todos los productos
+2023-12-17T17:33:01.960Z [logs] info: obtuvo todos los productos
+2023-12-17T17:33:02.163Z [logs] info: Se obtuvo productos del carrito con exito
+2023-12-17T17:33:20.907Z [logs] info: GET en /api/products?limit=2
+2023-12-17T17:40:42.383Z [logs] info: obtuvo todos los productos
+2023-12-17T17:40:42.470Z [logs] info: obtuvo todos los productos
+2023-12-17T17:40:42.616Z [logs] info: Se obtuvo productos del carrito con exito
+2023-12-17T17:40:55.935Z [logs] info: GET en /mongo/products
+2023-12-17T17:40:56.013Z [logs] info: se obtuvo productos con paginacion
+2023-12-17T17:45:43.017Z [logs] info: obtuvo todos los productos
+2023-12-17T17:45:43.545Z [logs] info: obtuvo todos los productos
+2023-12-17T17:45:43.763Z [logs] info: Se obtuvo productos del carrito con exito
+2023-12-17T17:46:02.142Z [logs] info: obtuvo todos los productos
+2023-12-17T17:46:02.627Z [logs] info: obtuvo todos los productos
+2023-12-17T17:46:02.781Z [logs] info: Se obtuvo productos del carrito con exito
+2023-12-17T17:46:12.210Z [logs] info: GET en /ecommerce/home/login
+2023-12-17T17:46:12.214Z [logs] info: Ingreso a pagina de Login
+2023-12-17T17:49:10.320Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T17:49:10.406Z [logs] info: obtuvo todos los productos
+2023-12-17T17:49:10.408Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T17:50:09.700Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T17:50:09.779Z [logs] info: obtuvo todos los productos
+2023-12-17T17:50:09.781Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T17:51:15.426Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T17:51:15.517Z [logs] info: obtuvo todos los productos
+2023-12-17T17:51:15.518Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T17:51:27.670Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T17:51:27.744Z [logs] info: obtuvo todos los productos
+2023-12-17T17:51:27.746Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T18:16:30.776Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T18:16:30.854Z [logs] info: obtuvo todos los productos
+2023-12-17T18:16:30.854Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T18:16:30.901Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T18:16:31.021Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T18:46:42.063Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T18:46:42.153Z [logs] info: obtuvo todos los productos
+2023-12-17T18:46:42.153Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T18:46:42.180Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T18:46:42.274Z [logs] error: Fallo la creacion del producto : undefined
+2023-12-17T18:46:42.280Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T18:46:42.368Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T19:00:48.583Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T19:00:48.660Z [logs] info: obtuvo todos los productos
+2023-12-17T19:00:48.660Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T19:00:48.694Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T19:00:48.808Z [logs] error: Fallo la creacion del producto : undefined
+2023-12-17T19:00:48.813Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T19:00:48.890Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T19:00:48.895Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T19:00:49.039Z [logs] info: Se elimino el producto correctamente : admin657f4212cc2503ea75d00f8f
+2023-12-17T19:12:33.946Z [logs] info: POST en /mongo/carts/create
+2023-12-17T19:12:34.152Z [logs] info: se creo carrito con exito
+2023-12-17T19:12:34.166Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T19:12:34.314Z [logs] info: obtuvo todos los productos
+2023-12-17T19:12:34.314Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T19:12:34.337Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T19:12:34.505Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T19:12:34.510Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T19:12:35.204Z [logs] info: Se elimino el producto correctamente : admin657f4560aa7d0ead2b69ecb0
+2023-12-17T19:25:52.682Z [logs] info: POST en /mongo/carts/create
+2023-12-17T19:25:52.773Z [logs] info: se creo carrito con exito
+2023-12-17T19:25:52.786Z [logs] info: PUT en /mongo/carts/carts/:cid/products/:pid
+2023-12-17T19:25:52.792Z [logs] fatal: hubo un error actualizando el carrito
+2023-12-17T19:25:52.796Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T19:25:52.908Z [logs] info: obtuvo todos los productos
+2023-12-17T19:25:52.909Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T19:25:52.930Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T19:25:53.020Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T19:25:53.026Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T19:25:53.225Z [logs] info: Se elimino el producto correctamente : admin657f3afed384663439b138d3
+2023-12-17T19:31:19.657Z [logs] info: POST en /mongo/carts/create
+2023-12-17T19:31:19.755Z [logs] info: se creo carrito con exito
+2023-12-17T19:31:19.767Z [logs] info: PUT en /mongo/carts/carts/657f4821ba05907d13cb94ed/products/6577acb290ae9846a2a85254
+2023-12-17T19:31:19.783Z [logs] fatal: hubo un error actualizando el carrito
+2023-12-17T19:31:19.787Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T19:31:19.874Z [logs] info: obtuvo todos los productos
+2023-12-17T19:31:19.874Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T19:31:19.897Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T19:31:19.989Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T19:31:19.994Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T19:31:20.155Z [logs] info: Se elimino el producto correctamente : admin657f4822ba05907d13cb94f0
+2023-12-17T20:22:16.781Z [logs] info: POST en /mongo/carts/create
+2023-12-17T20:22:16.965Z [logs] info: se creo carrito con exito
+2023-12-17T20:22:16.979Z [logs] info: PUT en /mongo/carts/carts/657f4821ba05907d13cb94ed/addproducts/6577acb290ae9846a2a85254
+2023-12-17T20:22:17.128Z [logs] info: carrito existe para agregar producto
+2023-12-17T20:22:17.130Z [logs] info: producto no existe en el carrito
+2023-12-17T20:22:17.138Z [logs] info: PUT en /mongo/carts/delete/657f4c8734b11b17b1fa9bdc
+2023-12-17T20:22:17.144Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T20:22:17.321Z [logs] info: obtuvo todos los productos
+2023-12-17T20:22:17.321Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T20:22:17.360Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T20:22:17.500Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T20:22:17.507Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T20:22:17.788Z [logs] info: Se elimino el producto correctamente : admin657f4c8734b11b17b1fa9bdf
+2023-12-17T20:25:27.967Z [logs] info: POST en /mongo/carts/create
+2023-12-17T20:25:28.204Z [logs] info: se creo carrito con exito
+2023-12-17T20:25:28.217Z [logs] info: PUT en /mongo/carts/carts/6552c38a49e9ce52242b3fb0/addproducts/6577acb290ae9846a2a85254
+2023-12-17T20:25:28.356Z [logs] info: carrito existe para agregar producto
+2023-12-17T20:25:28.359Z [logs] info: producto no existe en el carrito
+2023-12-17T20:25:28.367Z [logs] info: PUT en /mongo/carts/delete/657f4c8734b11b17b1fa9bdc
+2023-12-17T20:25:28.375Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T20:25:28.598Z [logs] info: obtuvo todos los productos
+2023-12-17T20:25:28.598Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T20:25:28.643Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T20:25:28.864Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T20:25:28.871Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T20:25:29.265Z [logs] info: Se elimino el producto correctamente : admin657f5879f87c276e1e55371a
+2023-12-17T20:49:11.295Z [logs] info: POST en /ecommerce/user/login_passport
+2023-12-17T20:49:11.559Z [logs] info: GET en /api/sessions/failurelogin
+2023-12-17T20:49:11.562Z [logs] error: Fallo login del usuario: undefined
+2023-12-17T20:49:27.186Z [logs] info: GET en /ecommerce/home/login
+2023-12-17T20:49:27.191Z [logs] info: Ingreso a pagina de Login
+2023-12-17T20:49:35.567Z [logs] info: POST en /ecommerce/user/login_passport
+2023-12-17T20:49:36.010Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-12-17T20:49:36.014Z [logs] info: Ingreso usuario
+2023-12-17T20:49:36.020Z [logs] info: GET en /ecommerce/user/user
+2023-12-17T20:49:37.115Z [logs] info: Entre a /user
+2023-12-17T20:49:40.631Z [logs] info: GET en /ecommerce/home/logout?
+2023-12-17T20:49:41.014Z [logs] info: Usuario hizo logout: davidferere@gmail.com
+2023-12-17T20:49:41.020Z [logs] info: GET en /ecommerce/home/login
+2023-12-17T20:49:41.155Z [logs] info: Ingreso a pagina de Login
+2023-12-17T21:00:07.625Z [logs] info: POST en /mongo/carts/create
+2023-12-17T21:00:07.759Z [logs] info: se creo carrito con exito
+2023-12-17T21:00:07.772Z [logs] info: PUT en /mongo/carts/carts/6552c38a49e9ce52242b3fb0/addproducts/650783c3d9a22676deb6b498
+2023-12-17T21:00:07.929Z [logs] info: carrito existe para agregar producto
+2023-12-17T21:00:07.931Z [logs] info: Producto existe en el carrito
+2023-12-17T21:00:07.938Z [logs] info: PUT en /mongo/carts/delete/650f8c909eb8cdee19d0fce7
+2023-12-17T21:00:07.943Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T21:00:08.135Z [logs] info: obtuvo todos los productos
+2023-12-17T21:00:08.136Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T21:00:08.162Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T21:00:08.334Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T21:00:08.341Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T21:00:08.607Z [logs] info: Se elimino el producto correctamente : admin657f593843edc64730d575b6
+2023-12-17T21:00:08.612Z [logs] info: POST en /ecommerce/user/login_passport/test
+2023-12-17T21:11:55.231Z [logs] info: POST en /ecommerce/user/login_passport
+2023-12-17T21:11:55.887Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-12-17T21:11:55.889Z [logs] info: Ingreso usuario
+2023-12-17T21:11:55.893Z [logs] info: GET en /ecommerce/user/user
+2023-12-17T21:11:57.124Z [logs] info: Entre a /user
+2023-12-17T21:14:56.461Z [logs] info: GET en /ecommerce/home/logout?
+2023-12-17T21:14:56.597Z [logs] info: Usuario hizo logout: undefined
+2023-12-17T21:14:56.603Z [logs] info: GET en /ecommerce/home/login
+2023-12-17T21:14:57.573Z [logs] info: Ingreso a pagina de Login
+2023-12-17T21:15:06.796Z [logs] info: POST en /mongo/carts/create
+2023-12-17T21:15:06.955Z [logs] info: se creo carrito con exito
+2023-12-17T21:15:06.965Z [logs] info: PUT en /mongo/carts/carts/6552c38a49e9ce52242b3fb0/addproducts/650900c92b1137dd05fdcc3d
+2023-12-17T21:15:07.105Z [logs] info: carrito existe para agregar producto
+2023-12-17T21:15:07.109Z [logs] info: producto no existe en el carrito
+2023-12-17T21:15:07.116Z [logs] info: PUT en /mongo/carts/delete/657f4c8734b11b17b1fa9bdc
+2023-12-17T21:15:07.123Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T21:15:07.246Z [logs] info: obtuvo todos los productos
+2023-12-17T21:15:07.246Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T21:15:07.280Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T21:15:07.429Z [logs] error: Fallo la creacion del producto : undefined
+2023-12-17T21:15:07.434Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T21:15:07.806Z [logs] info: Se elimino el producto correctamente : admin657f6158790210cbe814712d
+2023-12-17T21:15:07.811Z [logs] info: POST en /ecommerce/user/login_passport/test
+2023-12-17T22:02:27.323Z [logs] info: POST en /mongo/carts/create
+2023-12-17T22:02:27.423Z [logs] info: se creo carrito con exito
+2023-12-17T22:02:27.436Z [logs] info: PUT en /mongo/carts/carts/6552c38a49e9ce52242b3fb0/addproducts/650900c92b1137dd05fdcc3d
+2023-12-17T22:02:27.515Z [logs] info: carrito existe para agregar producto
+2023-12-17T22:02:27.519Z [logs] info: Producto existe en el carrito
+2023-12-17T22:02:27.526Z [logs] info: PUT en /mongo/carts/delete/6650f8fc8440c0f259797a199
+2023-12-17T22:02:27.533Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T22:02:27.608Z [logs] info: obtuvo todos los productos
+2023-12-17T22:02:27.609Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T22:02:27.641Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T22:02:27.735Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T22:02:27.742Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T22:02:27.897Z [logs] info: Se elimino el producto correctamente : admin657f4b40a7e577dc3355e819
+2023-12-17T22:02:27.903Z [logs] info: POST en /ecommerce/user/login_passport/test
+2023-12-17T22:02:28.249Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-12-17T22:15:12.211Z [logs] info: POST en /mongo/carts/create
+2023-12-17T22:15:12.322Z [logs] info: se creo carrito con exito
+2023-12-17T22:15:12.335Z [logs] info: PUT en /mongo/carts/carts/6552c38a49e9ce52242b3fb0/addproducts/65090407bcbd50e483127026
+2023-12-17T22:15:12.416Z [logs] info: carrito existe para agregar producto
+2023-12-17T22:15:12.420Z [logs] info: producto no existe en el carrito
+2023-12-17T22:15:12.427Z [logs] info: PUT en /mongo/carts/delete/657f4c8734b11b17b1fa9bdc
+2023-12-17T22:15:12.433Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T22:15:12.518Z [logs] info: obtuvo todos los productos
+2023-12-17T22:15:12.519Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T22:15:12.548Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T22:15:12.639Z [logs] info: Se creo el producto correctamente : undefined
+2023-12-17T22:15:12.645Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T22:15:12.855Z [logs] info: Se elimino el producto correctamente : admin657f6ff3693264ddb7ef65c5
+2023-12-17T22:15:12.860Z [logs] info: POST en /ecommerce/user/login_passport/test
+2023-12-17T22:15:13.126Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-12-17T22:15:13.216Z [logs] info: GET en /api/sessions/logout/test
+2023-12-17T22:15:13.218Z [logs] info: Usuario hizo logout: undefined
+2023-12-17T22:30:55.404Z [logs] info: POST en /mongo/carts/create
+2023-12-17T22:30:55.489Z [logs] info: se creo carrito con exito
+2023-12-17T22:30:55.503Z [logs] info: PUT en /mongo/carts/carts/6552c38a49e9ce52242b3fb0/addproducts/65090407bcbd50e483127026
+2023-12-17T22:30:55.583Z [logs] info: carrito existe para agregar producto
+2023-12-17T22:30:55.588Z [logs] info: Producto existe en el carrito
+2023-12-17T22:30:55.596Z [logs] info: PUT en /mongo/carts/delete/657f4c8734b11b17b1fa9bdc
+2023-12-17T22:30:55.602Z [logs] info: GET en /api/products/management/getallproducts
+2023-12-17T22:30:55.681Z [logs] info: obtuvo todos los productos
+2023-12-17T22:30:55.681Z [logs] info: OBTUVO TODOS LOS PRODUCTOS
+2023-12-17T22:30:55.713Z [logs] info: POST en /api/products/management/management/create
+2023-12-17T22:30:55.799Z [logs] error: Fallo la creacion del producto : undefined
+2023-12-17T22:30:55.805Z [logs] info: POST en /api/products/management/management/delete
+2023-12-17T22:30:55.959Z [logs] info: Se elimino el producto correctamente : admin657f72f0c46932049d84475b
+2023-12-17T22:30:55.964Z [logs] info: POST en /ecommerce/user/login_passport/test
+2023-12-17T22:30:56.241Z [logs] info: Usuario hizo login: davidferere@gmail.com
+2023-12-17T22:30:56.241Z [logs] info: Usuario hizo logout: davidferere@gmail.com

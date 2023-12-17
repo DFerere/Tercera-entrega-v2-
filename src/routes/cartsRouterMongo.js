@@ -16,7 +16,8 @@ router.get("/", async (req, res) => {
 
 router.post("/create", async (req, res) => {
     const response = await carritosMongo.createcart();
-    return res.send(response);
+    res.send(response);
+    //return res.send(response);
 })
 
 router.delete("/deleteproduct/:cid/products/:pid", async (req, res) => {
@@ -44,6 +45,20 @@ router.put("/carts/:cid/products/:pid", async (req, res) => {
     console.log(quantity);
 
     const response = await carritosMongo.updateCart(cid, pid, quantity);
+
+
+
+    return res.send(response);
+})
+
+router.put("/carts/:cid/addproducts/:pid", async (req, res) => {
+
+    var cid = req.params.cid;
+    var pid = req.params.pid;
+    console.log(cid);
+    console.log(pid);
+
+    const response = await carritosMongo.addProductCart(cid, pid);
 
 
 

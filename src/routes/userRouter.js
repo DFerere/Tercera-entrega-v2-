@@ -180,6 +180,45 @@ router.post('/login_passport',
     }
 );
 
+
+
+//LOGIN CON GITHUB
+
+//LOGIN DE TEST
+
+router.post('/login_passport/test',
+
+    passport.authenticate('login', { failureRedirect: '/api/sessions/failurelogin' }),
+    async (req, res) => {
+        //guardamos info del usuario en session
+
+        req.session.first_name = req.user.first_name;
+        req.session.last_name = req.user.last_name;
+        req.session.email = req.user.email;
+        req.session.age = req.user.age;
+        req.session.rol = req.user.rol;
+        req.session.cart = req.user.cart;
+        req.session.isLogged = true;
+
+        const name = req.session.first_name;
+        console.log(name);
+
+        const session_object = req.session; 
+
+
+        console.log(req.session.rol);
+        logger.info('Usuario hizo login: ' + req.session.email);
+        
+        logger.info('Usuario hizo logout: ' + req.session.email);
+
+        req.session.destroy();
+
+        res.send(session_object); 
+
+
+    }
+);
+
 router.get('/user', async (req, res) => { 
 
     req.session.first_name = req.user.first_name;
