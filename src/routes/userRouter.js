@@ -11,6 +11,9 @@ import EErrors from '../repository/errors/EErrors.js';
 import { generateUserErrorInfo } from '../repository/errors/Info.js';
 import { logger } from '../utils/logger.js';
 import TokenManagerMongo from '../controllers/mongo/tokenManagerMongo.js';
+import { uploader } from '../middlewares/multer.js';
+import { uploaderproducts } from '../middlewares/multerproducts.js';
+import { uploaderprofiles } from '../middlewares/multerprofile.js';
 
 dotenv.config();
 
@@ -106,7 +109,8 @@ router.get('/rol', async (req, res) => {
 
     try {
 
-        await users.changerol(email);
+        //await users.changerol(email);
+        await users.validatedocuments(email);
         res.send("Se cambio rol con exito");
 
     } catch {
@@ -305,6 +309,55 @@ router.get(
         req.session.isLogged = true;
         res.redirect('/mongo/products/catalog');
     });
+
+
+//Para subir documentos con Multer
+
+router.get('/documents', async (req, res) => {
+
+    res.render('UploadFiles');
+
+    logger.info('Entro a form de carga de archivos' + req.session.email); 
+
+});
+
+router.get('/productspicture', async (req, res) => {
+
+    res.render('UploadFilesProducts');
+
+    logger.info('Entro a form de carga de archivos del producto' + req.session.email); 
+
+});
+
+router.get('/profilepicture', async (req, res) => {
+
+    res.render('UploadFilesprofiles');
+
+    logger.info('Entro a form de carga de foto de perfil' + req.session.email); 
+
+
+});
+
+router.post('/uploaddocuments', uploader.single('file'), async (req, res) => {
+    await users.changedocumentstatus(req.session.email, req.file.filename, req.file.path); 
+    logger.info('Cargo archivo de forma exitosa' + req.session.email); 
+    console.log(req.session); 
+    res.send(req.file.path); 
+});
+
+router.post('/uploadprofiles', uploaderprofiles.single('file'), async (req, res) => {
+    await users.changedocumentstatus(req.session.email, req.file.filename, req.file.path);
+    logger.info('Cargo archivo de forma exitosa' + req.session.email); 
+    console.log(req.session); 
+    res.send(req.file.path); 
+});
+
+router.post('/uploadproducts', uploaderproducts.single('file'), async (req, res) => {
+    await users.changedocumentstatus(req.session.email, req.file.filename, req.file.path);
+    logger.info('Cargo archivo de forma exitosa' + req.session.email); 
+    console.log(req.session); 
+    res.send(req.file.path); 
+});
 
 
 export default router;

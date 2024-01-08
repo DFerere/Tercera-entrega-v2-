@@ -133,6 +133,18 @@ const DBconnection = async () => {
 
 DBconnection();
 
+//Multer para subir archivos
+
+//const upload = multer(); 
+
+/*const upload = multer({ dest: './public/data/uploads/' }, {
+  //storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5, // 5 MB
+    files: 10, // 10 files
+  },
+});*/
+
 app.engine('handlebars', handlebars.engine());
 app.set('views', __dirname + '/views');
 app.set('view engine', 'handlebars');
@@ -146,13 +158,19 @@ app.use('/ecommerce/user', userRouter); //Ruta de usarios
 
 app.use('/api', cartsRouterMongo);
 
-app.use('/api/sessions', sessionRouter);
+app.use('/api/sessions', sessionRouter); //Ruta de manejo de sesiones 
 
 app.use('/loggerTest', loggerRouter); //testear Logger
 
 app.use('/api/chat', chatRouterMongo); //endpoint del chat
 
-app.use(errorHandler); 
+/*app.post('/stats', upload.single('uploaded_file'), function (req, res) {
+  // req.file is the name of your file in the form above, here 'uploaded_file'
+  // req.body will hold the text fields, if there were any 
+  console.log(req.file, req.body)
+});
+
+app.use(errorHandler); */
 
 
 //Sockets///

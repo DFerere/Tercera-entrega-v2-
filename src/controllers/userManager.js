@@ -4,11 +4,14 @@ import passport from 'passport';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 
+import user from '../repository/servicesuser.js';
+
 import mailing from '../services/email.js';
 import { logger } from '../utils/logger.js';
 
 dotenv.config();
 const usermailing = new mailing();
+const userservice = new user();
 
 class userManager {
 
@@ -76,13 +79,13 @@ class userManager {
     async validatepassword(password, email) {
 
         console.log(email);
-        console.log(password); 
+        console.log(password);
 
         try {
 
             const userExists = await usersModel.findOne({ email });
 
-            if(userExists){
+            if (userExists) {
 
                 if (!bcrypt.compareSync(password, userExists.password)) {
                     return 1;
@@ -110,14 +113,14 @@ class userManager {
     async changepassword(password, email) {
 
         console.log(email);
-        console.log(password); 
+        console.log(password);
 
         try {
 
             const userExists = await usersModel.findOne({ email });
             console.log(userExists);
 
-            if(userExists){
+            if (userExists) {
 
                 const newpassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
@@ -126,7 +129,7 @@ class userManager {
                 console.log(userExists);
                 console.log(newpassword);
 
-                await usersModel.updateOne({email : userExists.email}, {$set: {password: userExists.password}});
+                await usersModel.updateOne({ email: userExists.email }, { $set: { password: userExists.password } });
 
 
             } else {
@@ -144,32 +147,126 @@ class userManager {
 
     }
 
-    async changerol(email){
+    async changerol(email) {
 
-        try{
+        try {
 
-            const user = await usersModel.findOne({email}); 
+            const user = await usersModel.findOne({ email });
 
-            const rol = user.rol; 
+            const rol = user.rol;
 
-            if (rol === "premium"){
+            if (rol === "premium") {
 
                 user.rol = "user";
 
-                await usersModel.updateOne({email : user.email}, {$set: {rol: user.rol}});
+                await usersModel.updateOne({ email: user.email }, { $set: { rol: user.rol } });
 
                 logger.info("Se cambio rol del usuario con exito: " + email);
 
             } else {
 
                 user.rol = "premium";
-                await usersModel.updateOne({email : user.email}, {$set: {rol: user.rol}});
+                await usersModel.updateOne({ email: user.email }, { $set: { rol: user.rol } });
                 logger.info("Se cambio rol del usuario con exito: " + email);
             }
 
         } catch {
 
             logger.error("No se pudo cambiar rol del usuario: " + email);
+
+        }
+
+    }
+
+
+    async validatedocuments(email) {
+        const docu = 0;
+
+        try {
+
+            const user = await usersModel.findOne({ email });
+
+            const documents = user.documents;
+            const rol = user.rol;
+            let docu2 = 0;
+
+
+            for (let i = 0; i < 10; i++) {
+                //console.log(documents[i]);
+                if (documents[i].name == "DNI.pdf" || documents[i].name == "Cuenta.pdf" || documents[i].name == "Domicilio.pdf") {
+                    docu2++;
+                    console.log(docu2);
+                    console.log("Tiene documento");
+                    if (docu2 === 3) {
+
+                        if (rol === "premium") {
+
+                            user.rol = "user";
+
+                            await usersModel.updateOne({ email: user.email }, { $set: { rol: user.rol } });
+
+                            logger.info("Se cambio rol del usuario con exito: " + email);
+                            return; 
+
+                        } else {
+
+                            user.rol = "premium";
+                            await usersModel.updateOne({ email: user.email }, { $set: { rol: user.rol } });
+                            logger.info("Se cambio rol del usuario con exito: " + email);
+                            return; 
+                        }
+                    }
+                } else {
+                    console.log("No tiene documento");
+                }
+            }
+
+            //console.log(docu2); 
+
+            /*const keysArray = Object.keys(docuobj);
+
+            // Count the number of keys
+            const count = keysArray.length;
+
+            console.log("Number of keys: " + count);*/
+
+            /*if (rol === "premium"){
+ 
+                 user.rol = "user";
+ 
+                 await usersModel.updateOne({email : user.email}, {$set: {rol: user.rol}});
+ 
+                 logger.info("Se cambio rol del usuario con exito: " + email);
+ 
+             } else {
+ 
+                 user.rol = "premium";
+                 await usersModel.updateOne({email : user.email}, {$set: {rol: user.rol}});
+                 logger.info("Se cambio rol del usuario con exito: " + email);
+             }*/
+
+        } catch {
+
+            logger.error("No se pudo cambiar rol del usuario: " + email);
+            res.send("Error aL cambiar ROL, verifique haber cargado su DNI, Estado de Cuente y Comprobante de Domicilio"); 
+
+        }
+
+    }
+
+
+    async changedocumentstatus(email, filename, filepath) {
+
+        try {
+
+            // const user = await usersModel.findOne({email});
+
+            const user = await userservice.updatedocuments(email, filename, filepath);
+
+
+        } catch {
+
+            logger.error("No se pudo cambiar estatus de documento de usuario: " + email);
 
         }
 

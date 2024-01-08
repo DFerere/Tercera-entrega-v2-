@@ -24,7 +24,7 @@ describe( 'Test para crear productos', () => {
             description : 'Teclado',
             price : 250,
             thumbnail : 'www.teclado.com',
-            code : 88899,
+            code : 88898,
             stock : 200,
             status : true,
             category : 'Teclado',
@@ -44,7 +44,7 @@ describe( 'Test para eliminar productos', () => {
     it('deberia eliminar el producto enviado al hacer un post a /api/products/management/management/delete', async () => {
          
         const product = {
-            idproduct : "657f72f0c46932049d84475b",
+            idproduct : "6577acb290ae9846a2a85254",
             owner : "admin"
         }; 
 

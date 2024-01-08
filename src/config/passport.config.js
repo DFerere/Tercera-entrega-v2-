@@ -63,8 +63,10 @@ const initializePassport = () => {
                             cart1 = { Products: [] }
                             const cart = await servicecart.createnewcart();
                             console.log(cart);
+                            const last_connection = new Date(); 
+                            let documents = { name: "", reference: ""}; 
 
-                            const user = await service.create(first_name, last_name, email, age, password, rol, cart);
+                            const user = await service.create(first_name, last_name, email, age, password, rol, last_connection, cart, documents);
 
 
                             return done(null, user);
@@ -160,6 +162,12 @@ const initializePassport = () => {
                     if (!bcrypt.compareSync(password, user.password)) {
                         return done(null, false);
                     }
+
+                    const last_connection = new Date(); 
+
+                    const updateuser = await service.updateconnection(username, last_connection); 
+
+                    console.log (updateuser); 
 
                     return done(null, user);
 
